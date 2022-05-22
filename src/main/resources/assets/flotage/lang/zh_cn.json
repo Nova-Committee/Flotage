@@ -2,5 +2,16 @@
   "itemGroup.flotage": "漂浮物",
 
   "item.flotage.oak_log_raft": "橡木木筏",
-  "block.flotage.oak_log_raft": "橡木木筏"
+  "item.flotage.spruce_log_raft": "云杉木木筏",
+  "item.flotage.birch_log_raft": "白桦木木筏",
+  "item.flotage.jungle_log_raft": "丛林木木筏",
+  "item.flotage.acacia_log_raft": "金合欢木木筏",
+  "item.flotage.dark_oak_log_raft": "深色橡木木筏",
+
+  "block.flotage.oak_log_raft": "橡木木筏",
+  "block.flotage.spruce_log_raft": "云杉木木筏",
+  "block.flotage.birch_log_raft": "白桦木木筏",
+  "block.flotage.jungle_log_raft": "丛林木木筏",
+  "block.flotage.acacia_log_raft": "金合欢木木筏",
+  "block.flotage.dark_oak_log_raft": "深色橡木木筏"
 }

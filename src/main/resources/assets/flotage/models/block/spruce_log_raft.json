@@ -1,0 +1,7 @@
+{
+	"parent": "flotage:base/raft",
+	"textures": {
+		"0": "block/spruce_log",
+		"particle": "block/spruce_log"
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "ss"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:birch_log"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "flotage:birch_log_raft",
+    "count": 6
+  }
+}

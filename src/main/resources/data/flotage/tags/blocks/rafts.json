@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "flotage:oak_log_raft",
+    "flotage:spruce_log_raft",
+    "flotage:birch_log_raft",
+    "flotage:jungle_log_raft",
+    "flotage:acacia_log_raft",
+    "flotage:dark_oak_log_raft"
+  ]
+}

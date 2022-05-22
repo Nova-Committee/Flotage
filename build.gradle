@@ -70,24 +70,26 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-
+    maven {
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.9'
-
+    runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.116")
 }
 
-// Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "flotage",
-                "Specification-Vendor"    : "chemiofitor",
+                "Specification-Title"     : "Flotage",
+                "Specification-Vendor"    : "Chemiofitor",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "chemiofitor",
+                "Implementation-Vendor"   : "Chemiofitor",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
