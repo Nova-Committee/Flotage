@@ -7,11 +7,15 @@
   "item.flotage.jungle_log_raft": "Jungle Raft",
   "item.flotage.acacia_log_raft": "Acacia Raft",
   "item.flotage.dark_oak_log_raft": "Dark Oak Raft",
+  "item.flotage.crimson_stem_raft": "Crimson Stem Raft",
+  "item.flotage.warped_stem_raft": "Warped Stem Raft",
 
   "block.flotage.oak_log_raft": "Oak Raft",
   "block.flotage.spruce_log_raft": "Spruce Raft",
   "block.flotage.birch_log_raft": "Birch Raft",
   "block.flotage.jungle_log_raft": "Jungle Raft",
   "block.flotage.acacia_log_raft": "Acacia Raft",
-  "block.flotage.dark_oak_log_raft": "Dark Oak Raft"
+  "block.flotage.dark_oak_log_raft": "Dark Oak Raft",
+  "block.flotage.crimson_stem_raft": "Crimson Stem Raft",
+  "block.flotage.warped_stem_raft": "Warped Stem Raft"
 }

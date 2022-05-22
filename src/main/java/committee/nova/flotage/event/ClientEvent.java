@@ -18,6 +18,11 @@ public class ClientEvent {
         event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(FloBlocks.JUNGLE_LOG_RAFT.get(), RenderType.cutout()));
         event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(FloBlocks.ACACIA_LOG_RAFT.get(), RenderType.cutout()));
         event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(FloBlocks.DARK_OAK_LOG_RAFT.get(), RenderType.cutout()));
+
+        event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(FloBlocks.CRIMSON_STEM_RAFT.get(), RenderType.cutout()));
+        event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(FloBlocks.WARPED_STEM_RAFT.get(), RenderType.cutout()));
+
+        event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(FloBlocks.OAK_LOG_FENCE.get(), RenderType.cutout()));
     }
 
 }

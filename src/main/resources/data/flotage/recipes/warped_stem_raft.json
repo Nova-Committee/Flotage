@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "ss"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:warped_stem"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "flotage:warped_stem_raft",
+    "count": 6
+  }
+}

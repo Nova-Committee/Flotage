@@ -4,6 +4,7 @@ import committee.nova.flotage.Flotage;
 import committee.nova.flotage.block.RaftBlock;
 import committee.nova.flotage.item.RaftItem;
 import committee.nova.flotage.item.Tabs;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -24,4 +25,12 @@ public class FloItems {
             () -> new RaftItem((RaftBlock) FloBlocks.ACACIA_LOG_RAFT.get(), new Item.Properties().tab(Tabs.MAIN)));
     public static final RegistryObject<Item> DARK_OAK_LOG_RAFT = ITEMS.register("dark_oak_log_raft",
             () -> new RaftItem((RaftBlock) FloBlocks.DARK_OAK_LOG_RAFT.get(), new Item.Properties().tab(Tabs.MAIN)));
+
+    public static final RegistryObject<Item> CRIMSON_STEM_RAFT = ITEMS.register("crimson_stem_raft",
+            () -> new RaftItem((RaftBlock) FloBlocks.CRIMSON_STEM_RAFT.get(), new Item.Properties().tab(Tabs.MAIN)));
+    public static final RegistryObject<Item> WARPED_STEM_RAFT = ITEMS.register("warped_stem_raft",
+            () -> new RaftItem((RaftBlock) FloBlocks.WARPED_STEM_RAFT.get(), new Item.Properties().tab(Tabs.MAIN)));
+
+    public static final RegistryObject<Item> OAK_LOG_FENCE = ITEMS.register("oak_log_fence",
+            () -> new BlockItem(FloBlocks.OAK_LOG_FENCE.get(), new Item.Properties().tab(Tabs.MAIN)));
 }

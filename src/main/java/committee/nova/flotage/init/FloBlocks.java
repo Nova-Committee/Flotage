@@ -2,6 +2,7 @@ package committee.nova.flotage.init;
 
 import committee.nova.flotage.Flotage;
 import committee.nova.flotage.block.RaftBlock;
+import committee.nova.flotage.block.SimpleFenceBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -24,4 +25,12 @@ public class FloBlocks {
             () -> new RaftBlock(AbstractBlock.Properties.copy(Blocks.ACACIA_SLAB).strength(1.0F, 1.8F)));
     public static final RegistryObject<Block> DARK_OAK_LOG_RAFT = BLOCKS.register("dark_oak_log_raft",
             () -> new RaftBlock(AbstractBlock.Properties.copy(Blocks.DARK_OAK_SLAB).strength(1.0F, 1.8F)));
+
+    public static final RegistryObject<Block> CRIMSON_STEM_RAFT = BLOCKS.register("crimson_stem_raft",
+            () -> new RaftBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_SLAB).strength(1.5F, 2.2F)));
+    public static final RegistryObject<Block> WARPED_STEM_RAFT = BLOCKS.register("warped_stem_raft",
+            () -> new RaftBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_SLAB).strength(1.5F, 2.2F)));
+
+    public static final RegistryObject<Block> OAK_LOG_FENCE = BLOCKS.register("oak_log_fence",
+            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.OAK_FENCE).strength(1.5F, 2.2F)));
 }

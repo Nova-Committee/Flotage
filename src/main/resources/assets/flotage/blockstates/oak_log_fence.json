@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "rotated=true": {
+      "model": "flotage:block/oak_log_fence",
+      "y": 90
+    },
+    "rotated=false": {
+      "model": "flotage:block/oak_log_fence"
+    }
+  }
+}

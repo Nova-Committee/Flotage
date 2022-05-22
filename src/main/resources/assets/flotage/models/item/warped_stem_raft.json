@@ -1,0 +1,7 @@
+{
+	"parent": "flotage:base/raft",
+	"textures": {
+		"0": "block/warped_stem",
+		"particle": "block/warped_stem"
+	}
+}

@@ -1,9 +1,6 @@
 package committee.nova.flotage.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IWaterLoggable;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -60,8 +57,12 @@ public class RaftBlock extends Block implements IWaterLoggable {
         if (!state.getValue(BlockStateProperties.WATERLOGGED)) {
             world.destroyBlock(pos, false);
         }
+        if (world.getBlockState(pos.above()).is(Blocks.FIRE)) {
+            world.removeBlock(pos.above(), false);
+        }
     }
 
+    @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         BlockPos blockpos = context.getClickedPos();
         FluidState fluidstate = context.getLevel().getFluidState(blockpos);
