@@ -11,8 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
@@ -34,8 +32,6 @@ public class RaftItem extends Item {
     public ActionResult<ItemStack> use(@Nonnull World world, PlayerEntity player,@Nonnull Hand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         BlockRayTraceResult result = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
-        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(player, world, itemstack, result);
-        if (ret != null) return ret;
         if (result.getType() == RayTraceResult.Type.MISS) {
             return ActionResult.pass(itemstack);
         } else if (result.getType() != RayTraceResult.Type.BLOCK) {
@@ -44,9 +40,10 @@ public class RaftItem extends Item {
             if (!world.isClientSide()) {
                 BlockPos blockpos = result.getBlockPos();
                 BlockState state = world.getBlockState(blockpos);
-                if (world.getBlockState(blockpos.above()) != state) {
-                    if (world.getBlockState(blockpos.above()).getValues().containsKey(BlockStateProperties.WATERLOGGED)){
-                        if (world.getBlockState(blockpos.above()).getValue(BlockStateProperties.WATERLOGGED)) {
+                BlockState aboveBlock = world.getBlockState(blockpos.above());
+                if (aboveBlock != state) {
+                    if (aboveBlock.getValues().containsKey(BlockStateProperties.WATERLOGGED)){
+                        if (aboveBlock.getValue(BlockStateProperties.WATERLOGGED)) {
                             return ActionResult.pass(itemstack);
                         }
                     }else {
@@ -55,25 +52,16 @@ public class RaftItem extends Item {
                             if (player instanceof ServerPlayerEntity) {
                                 CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayerEntity) player, blockpos, itemstack);
                             }
-                            world.playSound(player, blockpos, this.getPlaceSound(state, world, blockpos, player), SoundCategory.BLOCKS,1,1);
                             if (!player.abilities.instabuild) {
                                 itemstack.shrink(1);
                             }
                             return ActionResult.sidedSuccess(itemstack, true);
-                        } else {
-                            return ActionResult.pass(itemstack);
                         }
                     }
-                }else {
-                    return ActionResult.pass(itemstack);
                 }
             }
+            return ActionResult.pass(itemstack);
         }
-        return ActionResult.pass(itemstack);
-    }
-
-    protected SoundEvent getPlaceSound(BlockState state, World world, BlockPos pos, PlayerEntity entity) {
-        return state.getSoundType(world, pos, entity).getPlaceSound();
     }
 
     protected boolean canPlaceIn(BlockState state) {
