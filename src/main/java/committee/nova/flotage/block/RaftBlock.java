@@ -40,7 +40,7 @@ public class RaftBlock extends Block implements IWaterLoggable {
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
-        return Block.box(0, 14, 0, 16, 16, 16);
+        return Block.box(0, 13.25, 0, 16, 15.25, 16);
     }
 
     @Override
