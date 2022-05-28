@@ -1,21 +1,17 @@
 modLoader="javafml"
 loaderVersion="[36,)"
 license="MIT"
-
 [[mods]]
 modId="flotage"
 version="${file.jarVersion}"
 displayName="Flotage"
-description='''
-
-'''
+authors="Nova Committee,Chemiofitor"
 [[dependencies.flotage]]
    modId="forge"
    mandatory=true
    versionRange="[36,)"
    ordering="NONE"
    side="BOTH"
-
 [[dependencies.flotage]]
    modId="minecraft"
    mandatory=true
