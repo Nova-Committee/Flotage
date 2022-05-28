@@ -5,7 +5,12 @@ license="MIT"
 modId="flotage"
 version="${file.jarVersion}"
 displayName="Flotage"
+<<<<<<< Updated upstream
 authors="Nova Committee,Chemiofitor"
+=======
+authors = "Nova Committee,Chemiofitor"
+
+>>>>>>> Stashed changes
 [[dependencies.flotage]]
    modId="forge"
    mandatory=true
