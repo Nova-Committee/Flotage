@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
-        jcenter()
         mavenCentral()
     }
     dependencies {
@@ -9,19 +8,20 @@ buildscript {
     }
 }
 
+plugins {
+    id 'idea'
+    id 'maven-publish'
+}
 apply plugin: 'net.minecraftforge.gradle'
 
+version = '1.18.2-0.0.1'
 group = 'committee.nova.flotage'
-version = '1.16.5-0.0.1'
+archivesBaseName = 'Flotage'
 
-java {
-    archivesBaseName = 'Flotage'
-    toolchain.languageVersion = JavaLanguageVersion.of(8)
-}
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-
-    mappings channel: 'official', version: '1.16.5'
+    mappings channel: 'official', version: '1.18.2'
 
     runs {
         client {
@@ -29,6 +29,7 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'flotage'
 
             mods {
                 flotage {
@@ -42,6 +43,21 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'flotage'
+
+            mods {
+                flotage {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        gameTestServer {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'flotage'
 
             mods {
                 flotage {
@@ -54,6 +70,7 @@ minecraft {
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'REGISTRIES'
+
             property 'forge.logging.console.level', 'debug'
 
             args '--mod', 'flotage', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
@@ -71,14 +88,17 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
     }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.9'
-    runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.116")
+    minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
+
+    runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.5.3.143")
 }
 
 jar {
