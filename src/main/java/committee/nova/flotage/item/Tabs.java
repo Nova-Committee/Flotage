@@ -2,13 +2,13 @@ package committee.nova.flotage.item;
 
 import committee.nova.flotage.Flotage;
 import committee.nova.flotage.init.FloItems;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
 public class Tabs {
-    public static final ItemGroup MAIN = new ItemGroup(Flotage.MODID) {
+    public static final CreativeModeTab MAIN = new CreativeModeTab(Flotage.MODID) {
         @Nonnull
         @Override
         public ItemStack makeIcon() {

@@ -1,42 +1,52 @@
 package committee.nova.flotage.block;
 
-import net.minecraft.block.*;
-import net.minecraft.block.material.PushReaction;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.pathfinding.PathType;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Random;
 
-public class RaftBlock extends Block implements IWaterLoggable {
+public class RaftBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public RaftBlock(Properties properties) {
+    public RaftBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, true));
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(WATERLOGGED);
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getBlockSupportShape(BlockState p_60581_, BlockGetter p_60582_, BlockPos p_60583_) {
+        return Block.box(0, 13.25, 0, 16, 16, 16);
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return Block.box(0, 13.25, 0, 16, 15.25, 16);
     }
 
@@ -46,14 +56,19 @@ public class RaftBlock extends Block implements IWaterLoggable {
     }
 
     @Override
-    public void onPlace(BlockState state, World world, BlockPos pos, BlockState state1, boolean b) {
+    public void onPlace(BlockState state, Level world, BlockPos pos, BlockState state1, boolean b) {
         SoundType soundtype = SoundType.WOOD;
-        world.playSound(null, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS,(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-        world.getBlockTicks().scheduleTick(pos, this, 1);
+        world.playSound(null, pos, soundtype.getPlaceSound(), SoundSource.BLOCKS,(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+        world.scheduleTick(pos, this, 1);
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public boolean canPlaceLiquid(BlockGetter getter, BlockPos blockPos, BlockState state, Fluid fluid) {
+        return true;
+    }
+
+    @Override
+    public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         if (!state.getValue(BlockStateProperties.WATERLOGGED)) {
             world.destroyBlock(pos, false);
         }
@@ -63,16 +78,16 @@ public class RaftBlock extends Block implements IWaterLoggable {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos blockpos = context.getClickedPos();
         FluidState fluidstate = context.getLevel().getFluidState(blockpos);
         return this.defaultBlockState().setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState blockState, IWorld world, BlockPos pos, BlockPos pos1) {
+    public BlockState updateShape(BlockState state, Direction direction, BlockState blockState, LevelAccessor world, BlockPos pos, BlockPos pos1) {
         if (state.getValue(WATERLOGGED)) {
-            world.getLiquidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
+            world.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
         }
 
         return super.updateShape(state, direction, blockState, world, pos, pos1);
@@ -84,14 +99,7 @@ public class RaftBlock extends Block implements IWaterLoggable {
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, IBlockReader reader, BlockPos pos, PathType type) {
-        switch(type) {
-            case WATER:
-                return reader.getFluidState(pos).is(FluidTags.WATER);
-            case LAND:
-            case AIR:
-            default:
-                return false;
-        }
+    public boolean isPathfindable(BlockState state, BlockGetter getter, BlockPos pos, PathComputationType type) {
+        return false;
     }
 }
