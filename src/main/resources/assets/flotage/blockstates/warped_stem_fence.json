@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "flotage:block/warped_stem_fence"
+    },
+    "facing=east": {
+      "model": "flotage:block/warped_stem_fence",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "flotage:block/warped_stem_fence",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "flotage:block/warped_stem_fence",
+      "y": 270
+    }
+  }
+}

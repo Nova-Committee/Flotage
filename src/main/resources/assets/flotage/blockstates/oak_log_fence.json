@@ -1,11 +1,19 @@
 {
   "variants": {
-    "rotated=true": {
+    "facing=north": {
+      "model": "flotage:block/oak_log_fence"
+    },
+    "facing=east": {
       "model": "flotage:block/oak_log_fence",
       "y": 90
     },
-    "rotated=false": {
-      "model": "flotage:block/oak_log_fence"
+    "facing=south": {
+      "model": "flotage:block/oak_log_fence",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "flotage:block/oak_log_fence",
+      "y": 270
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "flotage:block/jungle_log_fence"
+    },
+    "facing=east": {
+      "model": "flotage:block/jungle_log_fence",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "flotage:block/jungle_log_fence",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "flotage:block/jungle_log_fence",
+      "y": 270
+    }
+  }
+}

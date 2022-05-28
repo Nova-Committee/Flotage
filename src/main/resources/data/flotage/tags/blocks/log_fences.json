@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "flotage:oak_log_fence",
+    "flotage:spruce_log_fence",
+    "flotage:birch_log_fence",
+    "flotage:jungle_log_fence",
+    "flotage:acacia_log_fence",
+    "flotage:dark_oak_log_fence",
+    "flotage:crimson_stem_fence",
+    "flotage:warped_stem_fence"
+  ]
+}

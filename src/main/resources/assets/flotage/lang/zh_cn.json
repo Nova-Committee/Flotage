@@ -9,6 +9,14 @@
   "item.flotage.dark_oak_log_raft": "深色橡木木筏",
   "item.flotage.crimson_stem_raft": "绯红木木筏",
   "item.flotage.warped_stem_raft": "诡异木木筏",
+  "item.flotage.oak_log_fence": "简易橡木栅栏",
+  "item.flotage.spruce_log_fence": "简易云杉木栅栏",
+  "item.flotage.birch_log_fence": "简易白桦木栅栏",
+  "item.flotage.jungle_log_fence": "简易丛林木栅栏",
+  "item.flotage.acacia_log_fence": "简易金合欢木栅栏",
+  "item.flotage.dark_oak_log_fence": "简易深色橡木栅栏",
+  "item.flotage.crimson_stem_fence": "简易绯红木栅栏",
+  "item.flotage.warped_stem_fence": "简易诡异木栅栏",
 
   "block.flotage.oak_log_raft": "橡木木筏",
   "block.flotage.spruce_log_raft": "云杉木木筏",
@@ -17,5 +25,13 @@
   "block.flotage.acacia_log_raft": "金合欢木木筏",
   "block.flotage.dark_oak_log_raft": "深色橡木木筏",
   "block.flotage.crimson_stem_raft": "绯红木木筏",
-  "block.flotage.warped_stem_raft": "诡异木木筏"
+  "block.flotage.warped_stem_raft": "诡异木木筏",
+  "block.flotage.oak_log_fence": "简易橡木栅栏",
+  "block.flotage.spruce_log_fence": "简易云杉木栅栏",
+  "block.flotage.birch_log_fence": "简易白桦木栅栏",
+  "block.flotage.jungle_log_fence": "简易丛林木栅栏",
+  "block.flotage.acacia_log_fence": "简易金合欢木栅栏",
+  "block.flotage.dark_oak_log_fence": "简易深色橡木栅栏",
+  "block.flotage.crimson_stem_fence": "简易绯红木栅栏",
+  "block.flotage.warped_stem_fence": "简易诡异木栅栏"
 }

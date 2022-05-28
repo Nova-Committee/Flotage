@@ -27,7 +27,7 @@ public class RaftBlock extends Block implements IWaterLoggable {
 
     public RaftBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, true));
     }
 
     @Override
@@ -67,10 +67,6 @@ public class RaftBlock extends Block implements IWaterLoggable {
         BlockPos blockpos = context.getClickedPos();
         FluidState fluidstate = context.getLevel().getFluidState(blockpos);
         return this.defaultBlockState().setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
-    }
-
-    public BlockState getOverState() {
-        return defaultBlockState().setValue(WATERLOGGED, true);
     }
 
     @Override

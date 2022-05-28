@@ -9,6 +9,14 @@
   "item.flotage.dark_oak_log_raft": "Dark Oak Raft",
   "item.flotage.crimson_stem_raft": "Crimson Stem Raft",
   "item.flotage.warped_stem_raft": "Warped Stem Raft",
+  "item.flotage.oak_log_fence": "Oak Fence",
+  "item.flotage.spruce_log_fence": "Spruce Fence",
+  "item.flotage.birch_log_fence": "Birch Fence",
+  "item.flotage.jungle_log_fence": "Jungle Fence",
+  "item.flotage.acacia_log_fence": "Acacia Fence",
+  "item.flotage.dark_oak_log_fence": "Dark Oak Fence",
+  "item.flotage.crimson_stem_fence": "Crimson Stem Fence",
+  "item.flotage.warped_stem_fence": "Warped Stem Fence",
 
   "block.flotage.oak_log_raft": "Oak Raft",
   "block.flotage.spruce_log_raft": "Spruce Raft",
@@ -17,5 +25,13 @@
   "block.flotage.acacia_log_raft": "Acacia Raft",
   "block.flotage.dark_oak_log_raft": "Dark Oak Raft",
   "block.flotage.crimson_stem_raft": "Crimson Stem Raft",
-  "block.flotage.warped_stem_raft": "Warped Stem Raft"
+  "block.flotage.warped_stem_raft": "Warped Stem Raft",
+  "block.flotage.oak_log_fence": "Oak Fence",
+  "block.flotage.spruce_log_fence": "Spruce Fence",
+  "block.flotage.birch_log_fence": "Birch Fence",
+  "block.flotage.jungle_log_fence": "Jungle Fence",
+  "block.flotage.acacia_log_fence": "Acacia Fence",
+  "block.flotage.dark_oak_log_fence": "Dark Oak Fence",
+  "block.flotage.crimson_stem_fence": "Crimson Stem Fence",
+  "block.flotage.warped_stem_fence": "Warped Stem Fence"
 }

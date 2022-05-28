@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-    "ss"
+    "#s#",
+    "#s#"
   ],
   "key": {
     "#": {
-      "item": "minecraft:oak_log"
+      "item": "minecraft:crimson_stem"
     },
     "s": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "flotage:oak_log_raft",
-    "count": 6
+    "item": "flotage:crimson_stem_fence",
+    "count": 24
   }
 }

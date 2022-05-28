@@ -48,7 +48,7 @@ public class RaftItem extends Item {
                         }
                     }else {
                         if (canPlaceIn(state)) {
-                            world.setBlock(blockpos, getBlock().getOverState(), 3);
+                            world.setBlock(blockpos, getBlock().defaultBlockState(), 3);
                             if (player instanceof ServerPlayerEntity) {
                                 CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayerEntity) player, blockpos, itemstack);
                             }

@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-    "ss"
+    "#s#",
+    "#s#"
   ],
   "key": {
     "#": {
-      "item": "minecraft:birch_log"
+      "item": "minecraft:dark_oak_log"
     },
     "s": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "flotage:birch_log_raft",
-    "count": 6
+    "item": "flotage:dark_oak_log_fence",
+    "count": 24
   }
 }

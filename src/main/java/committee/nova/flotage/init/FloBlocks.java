@@ -32,5 +32,20 @@ public class FloBlocks {
             () -> new RaftBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_SLAB).strength(1.5F, 2.2F)));
 
     public static final RegistryObject<Block> OAK_LOG_FENCE = BLOCKS.register("oak_log_fence",
-            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.OAK_FENCE).strength(1.5F, 2.2F)));
+            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.OAK_FENCE).strength(2, 2.5F)));
+    public static final RegistryObject<Block> SPRUCE_LOG_FENCE = BLOCKS.register("spruce_log_fence",
+            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.SPRUCE_FENCE).strength(2, 2.5F)));
+    public static final RegistryObject<Block> BIRCH_LOG_FENCE = BLOCKS.register("birch_log_fence",
+            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.BIRCH_FENCE).strength(2, 2.5F)));
+    public static final RegistryObject<Block> JUNGLE_LOG_FENCE = BLOCKS.register("jungle_log_fence",
+            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.JUNGLE_FENCE).strength(2, 2.5F)));
+    public static final RegistryObject<Block> ACACIA_LOG_FENCE = BLOCKS.register("acacia_log_fence",
+            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.ACACIA_FENCE).strength(2, 2.5F)));
+    public static final RegistryObject<Block> DARK_OAK_LOG_FENCE = BLOCKS.register("dark_oak_log_fence",
+            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.DARK_OAK_FENCE).strength(2, 2.5F)));
+
+    public static final RegistryObject<Block> CRIMSON_STEM_FENCE = BLOCKS.register("crimson_stem_fence",
+            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_FENCE).strength(2, 3)));
+    public static final RegistryObject<Block> WARPED_STEM_FENCE = BLOCKS.register("warped_stem_fence",
+            () -> new SimpleFenceBlock(AbstractBlock.Properties.copy(Blocks.WARPED_FENCE).strength(2, 3)));
 }

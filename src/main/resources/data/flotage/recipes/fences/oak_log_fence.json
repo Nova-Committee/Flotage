@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-    "ss"
+    "#s#",
+    "#s#"
   ],
   "key": {
     "#": {
-      "item": "minecraft:dark_oak_log"
+      "item": "minecraft:oak_log"
     },
     "s": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "flotage:dark_oak_log_raft",
-    "count": 6
+    "item": "flotage:oak_log_fence",
+    "count": 24
   }
 }

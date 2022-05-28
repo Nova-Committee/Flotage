@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-    "ss"
+    "#s#",
+    "#s#"
   ],
   "key": {
     "#": {
-      "item": "minecraft:crimson_stem"
+      "item": "minecraft:acacia_log"
     },
     "s": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "flotage:crimson_stem_raft",
-    "count": 6
+    "item": "flotage:acacia_log_fence",
+    "count": 24
   }
 }

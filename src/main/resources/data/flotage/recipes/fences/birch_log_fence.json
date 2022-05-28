@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-    "ss"
+    "#s#",
+    "#s#"
   ],
   "key": {
     "#": {
-      "item": "minecraft:spruce_log"
+      "item": "minecraft:birch_log"
     },
     "s": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "flotage:spruce_log_raft",
-    "count": 6
+    "item": "flotage:birch_log_fence",
+    "count": 24
   }
 }
