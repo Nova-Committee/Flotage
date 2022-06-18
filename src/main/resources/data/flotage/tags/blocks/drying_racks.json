@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "flotage:oak_drying_rack",
+    "flotage:spruce_drying_rack",
+    "flotage:birch_drying_rack",
+    "flotage:jungle_drying_rack",
+    "flotage:acacia_drying_rack",
+    "flotage:dark_oak_drying_rack",
+    "flotage:crimson_stem_fence",
+    "flotage:warped_stem_fence"
+  ]
+}

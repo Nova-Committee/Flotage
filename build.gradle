@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'committee.nova.flotage'
-version = '1.16.5-0.0.2'
+version = '1.16.5-0.0.3'
 
 java {
     archivesBaseName = 'Flotage'
@@ -77,6 +77,7 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.9'
+
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.116")
 }
 

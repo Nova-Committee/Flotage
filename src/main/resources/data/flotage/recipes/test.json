@@ -1,0 +1,9 @@
+{
+  "type": "flotage:drying",
+  "ingredient": {
+    "item": "minecraft:potato"
+  },
+  "result": "minecraft:baked_potato",
+  "experience": 0.35,
+  "dryingtime": 100
+}

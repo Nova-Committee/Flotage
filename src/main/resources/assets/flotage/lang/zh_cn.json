@@ -1,23 +1,6 @@
 {
   "itemGroup.flotage": "漂浮物",
 
-  "item.flotage.oak_log_raft": "橡木木筏",
-  "item.flotage.spruce_log_raft": "云杉木木筏",
-  "item.flotage.birch_log_raft": "白桦木木筏",
-  "item.flotage.jungle_log_raft": "丛林木木筏",
-  "item.flotage.acacia_log_raft": "金合欢木木筏",
-  "item.flotage.dark_oak_log_raft": "深色橡木木筏",
-  "item.flotage.crimson_stem_raft": "绯红木木筏",
-  "item.flotage.warped_stem_raft": "诡异木木筏",
-  "item.flotage.oak_log_fence": "简易橡木栅栏",
-  "item.flotage.spruce_log_fence": "简易云杉木栅栏",
-  "item.flotage.birch_log_fence": "简易白桦木栅栏",
-  "item.flotage.jungle_log_fence": "简易丛林木栅栏",
-  "item.flotage.acacia_log_fence": "简易金合欢木栅栏",
-  "item.flotage.dark_oak_log_fence": "简易深色橡木栅栏",
-  "item.flotage.crimson_stem_fence": "简易绯红木栅栏",
-  "item.flotage.warped_stem_fence": "简易诡异木栅栏",
-
   "block.flotage.oak_log_raft": "橡木木筏",
   "block.flotage.spruce_log_raft": "云杉木木筏",
   "block.flotage.birch_log_raft": "白桦木木筏",
@@ -26,6 +9,7 @@
   "block.flotage.dark_oak_log_raft": "深色橡木木筏",
   "block.flotage.crimson_stem_raft": "绯红木木筏",
   "block.flotage.warped_stem_raft": "诡异木木筏",
+
   "block.flotage.oak_log_fence": "简易橡木栅栏",
   "block.flotage.spruce_log_fence": "简易云杉木栅栏",
   "block.flotage.birch_log_fence": "简易白桦木栅栏",
@@ -33,5 +17,24 @@
   "block.flotage.acacia_log_fence": "简易金合欢木栅栏",
   "block.flotage.dark_oak_log_fence": "简易深色橡木栅栏",
   "block.flotage.crimson_stem_fence": "简易绯红木栅栏",
-  "block.flotage.warped_stem_fence": "简易诡异木栅栏"
+  "block.flotage.warped_stem_fence": "简易诡异木栅栏",
+
+  "block.flotage.drying_rack": "干燥架",
+  "block.flotage.oak_drying_rack": "橡木干燥架",
+  "block.flotage.spruce_drying_rack": "云杉木干燥架",
+  "block.flotage.birch_drying_rack": "白桦木干燥架",
+  "block.flotage.jungle_drying_rack": "丛林木干燥架",
+  "block.flotage.acacia_drying_rack": "金合欢木干燥架",
+  "block.flotage.dark_oak_drying_rack": "深色橡木干燥架",
+  "block.flotage.crimson_stem_drying_rack": "绯红木干燥架",
+  "block.flotage.warped_stem_drying_rack": "诡异木干燥架",
+
+  "block.flotage.oak_broken_raft": "损坏的橡木木筏",
+  "block.flotage.spruce_broken_raft": "损坏的云杉木木筏",
+  "block.flotage.birch_broken_raft": "损坏的白桦木木筏",
+  "block.flotage.jungle_broken_raft": "损坏的丛林木木筏",
+  "block.flotage.acacia_broken_raft": "损坏的金合欢木木筏",
+  "block.flotage.dark_oak_broken_raft": "损坏的深色橡木木筏",
+  "block.flotage.crimson_stem_broken_raft": "损坏的绯红木木筏",
+  "block.flotage.warped_stem_broken_raft": "损坏的诡异木木筏"
 }

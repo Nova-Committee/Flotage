@@ -1,15 +1,16 @@
 package committee.nova.flotage.block;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.IWaterLoggable;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -19,14 +20,18 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
 public class RaftBlock extends Block implements IWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    private final Block brokenBlock;
 
-    public RaftBlock(Properties properties) {
+    public RaftBlock(Properties properties, Block brokenBlock) {
         super(properties);
+        this.brokenBlock = brokenBlock;
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, true));
     }
 
@@ -62,9 +67,11 @@ public class RaftBlock extends Block implements IWaterLoggable {
         if (!state.getValue(BlockStateProperties.WATERLOGGED)) {
             world.destroyBlock(pos, false);
         }
-        if (world.getBlockState(pos.above()).is(Blocks.FIRE)) {
-            world.removeBlock(pos.above(), false);
-        }
+    }
+
+    @Override
+    public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+        return false;
     }
 
     @Override
@@ -88,15 +95,24 @@ public class RaftBlock extends Block implements IWaterLoggable {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
+    @OnlyIn(Dist.CLIENT)
+    public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) {
+        return 0.5F;
+    }
+
+    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
+        return true;
+    }
+
     @Override
-    public boolean isPathfindable(BlockState state, IBlockReader reader, BlockPos pos, PathType type) {
-        switch(type) {
-            case WATER:
-                return reader.getFluidState(pos).is(FluidTags.WATER);
-            case LAND:
-            case AIR:
-            default:
-                return false;
+    public boolean isRandomlyTicking(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (world.isRainingAt(pos.above())) {
+            world.setBlock(pos, brokenBlock.defaultBlockState(), 3);
         }
     }
 }

@@ -65,6 +65,15 @@ public class SimpleFenceBlock extends Block implements IWaterLoggable {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
+    @Override
+    public int getFireSpreadSpeed(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+        return 5;
+    }
+
+    @Override
+    public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+        return 8;
+    }
 
     @Override
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {

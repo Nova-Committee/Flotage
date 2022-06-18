@@ -1,0 +1,8 @@
+{
+	"parent": "flotage:base/drying_rack",
+	"textures": {
+		"0": "block/jungle_log",
+		"1": "block/jungle_log_top",
+		"particle": "block/jungle_log"
+	}
+}

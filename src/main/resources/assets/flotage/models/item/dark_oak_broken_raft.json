@@ -1,0 +1,7 @@
+{
+	"parent": "flotage:base/broken_raft",
+	"textures": {
+		"0": "block/dark_oak_log",
+		"particle": "block/dark_oak_log"
+	}
+}

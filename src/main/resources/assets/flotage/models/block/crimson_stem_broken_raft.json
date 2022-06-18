@@ -1,0 +1,7 @@
+{
+	"parent": "flotage:base/broken_raft",
+	"textures": {
+		"0": "block/crimson_stem",
+		"particle": "block/crimson_stem"
+	}
+}

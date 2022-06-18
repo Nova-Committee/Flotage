@@ -1,7 +1,7 @@
 package committee.nova.flotage.item;
 
-import committee.nova.flotage.block.RaftBlock;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 
 public class RaftItem extends BlockItem {
 
-    public RaftItem(RaftBlock block, Properties properties) {
+    public RaftItem(Block block, Properties properties) {
         super(block, properties);
     }
 
