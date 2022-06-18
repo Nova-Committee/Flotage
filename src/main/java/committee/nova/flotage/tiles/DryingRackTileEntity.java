@@ -27,6 +27,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class DryingRackTileEntity extends TileEntity implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
     private static final int[] SLOTS = new int[]{0};
@@ -143,7 +144,7 @@ public class DryingRackTileEntity extends TileEntity implements ISidedInventory,
 
     @Override
     public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-        return (direction == Direction.UP && index == 0);
+        return index == 0;
     }
 
     @Override
@@ -177,15 +178,17 @@ public class DryingRackTileEntity extends TileEntity implements ISidedInventory,
         assert this.level != null;
         if (!this.level.isClientSide) {
             ItemStack itemstack = this.stacks.get(0);
-            if (!itemstack.isEmpty()) {
-                IRecipe<?> iRecipe = this.level.getRecipeManager().getRecipeFor(this.recipeType, this, this.level).orElse(null);
-                if (!itemstack.isEmpty()) {
-                    this.dryingTotalTime = this.getTotalDryTime();
-                }
-                ++this.dryingProgress;
-                if (this.dryingProgress == this.dryingTotalTime) {
-                    this.dryingProgress = 0;
-                    this.dry(iRecipe);
+            if (!itemstack.isEmpty() ) {
+                Optional<?> iRecipe = this.level.getRecipeManager().getRecipeFor(this.recipeType, this, this.level);
+                if (iRecipe.isPresent()) {
+                    if (!itemstack.isEmpty()) {
+                        this.dryingTotalTime = this.getTotalDryTime();
+                    }
+                    ++this.dryingProgress;
+                    if (this.dryingProgress == this.dryingTotalTime) {
+                        this.dryingProgress = 0;
+                        this.dry((IRecipe<?>)iRecipe.get());
+                    }
                 }
             }else {
                 this.dryingProgress = 0;

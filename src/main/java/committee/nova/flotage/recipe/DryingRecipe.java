@@ -46,6 +46,10 @@ public class DryingRecipe extends AbstractCookingRecipe {
         return this.ingredient.test(inventory.getItem(0));
     }
 
+    public boolean matches(ItemStack itemStack, World world) {
+        return this.ingredient.test(itemStack);
+    }
+
     @Override
     public IRecipeSerializer<?> getSerializer() {
         return FloRecipes.DRYING_RECIPE.get();
