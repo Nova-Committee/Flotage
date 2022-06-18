@@ -17,13 +17,11 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class DryingRackBlock extends Block {
     public DryingRackBlock(Properties properties) {
@@ -80,16 +78,16 @@ public class DryingRackBlock extends Block {
                     player.getItemInHand(hand).shrink(handStack.getCount());
                 }else {
                     if (inStack.getItem() == handStack.getItem()) {
-                        if (inStack.getCount() == 64) {
+                        if (inStack.getCount() == inStack.getMaxStackSize()) {
                             return ActionResultType.PASS;
                         }
                         int totalQuantity = inStack.getCount() + handStack.getCount();
-                        if (totalQuantity <=64) {
+                        if (totalQuantity <= inStack.getMaxStackSize()) {
                             dryingTile.setItem(0, new ItemStack(inStack.getItem(), totalQuantity));
                             player.getItemInHand(hand).shrink(handStack.getCount());
                         }else {
-                            dryingTile.setItem(0, new ItemStack(inStack.getItem(), 64));
-                            player.getItemInHand(hand).setCount(totalQuantity - 64);
+                            dryingTile.setItem(0, new ItemStack(inStack.getItem(), inStack.getMaxStackSize()));
+                            player.getItemInHand(hand).setCount(totalQuantity - inStack.getMaxStackSize());
                         }
                     }else {
                         player.getItemInHand(hand).shrink(handStack.getCount());
@@ -102,17 +100,6 @@ public class DryingRackBlock extends Block {
             return ActionResultType.FAIL;
         }else {
             return ActionResultType.PASS;
-        }
-    }
-
-    @Override
-    public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        TileEntity tileentity = world.getBlockEntity(pos);
-        if (tileentity != null) {
-            if (tileentity instanceof DryingRackTileEntity) {
-                DryingRackTileEntity dryingTile = (DryingRackTileEntity) tileentity;
-                dryingTile.tick(world, pos, state, dryingTile);
-            }
         }
     }
 

@@ -41,20 +41,6 @@ public class DryingRecipe extends AbstractCookingRecipe {
         return itemstack;
     }
 
-    public ItemStack assemble(ItemStack stack) {
-        ItemStack itemstack = this.result.copy();
-        CompoundNBT compoundnbt = stack.getTag();
-        if (compoundnbt != null) {
-            itemstack.setTag(compoundnbt.copy());
-        }
-
-        return itemstack;
-    }
-
-    public boolean matches(ItemStack stack, World world) {
-        return this.ingredient.test(stack);
-    }
-
     @Override
     public boolean matches(IInventory inventory, World world) {
         return this.ingredient.test(inventory.getItem(0));

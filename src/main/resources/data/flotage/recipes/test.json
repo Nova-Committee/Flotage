@@ -1,9 +1,9 @@
 {
   "type": "flotage:drying",
   "ingredient": {
-    "item": "minecraft:potato"
+    "item": "minecraft:kelp"
   },
-  "result": "minecraft:baked_potato",
+  "result": "minecraft:dried_kelp",
   "experience": 0.35,
-  "dryingtime": 100
+  "dryingtime": 200
 }
