@@ -63,22 +63,22 @@ public class FloItems {
     public static final RegistryObject<Item> WARPED_STEM_FENCE = ITEMS.register("warped_stem_fence",
             () -> new BlockItem(FloBlocks.WARPED_STEM_FENCE.get(), itemPro()));
 
-    public static final RegistryObject<Item> OAK_DRYING_RACK = ITEMS.register("oak_drying_rack",
-            () -> new BlockItem(FloBlocks.OAK_DRYING_RACK.get(), itemPro()));
-    public static final RegistryObject<Item> SPRUCE_DRYING_RACK = ITEMS.register("spruce_drying_rack",
-            () -> new BlockItem(FloBlocks.SPRUCE_DRYING_RACK.get(), itemPro()));
-    public static final RegistryObject<Item> BIRCH_DRYING_RACK = ITEMS.register("birch_drying_rack",
-            () -> new BlockItem(FloBlocks.BIRCH_DRYING_RACK.get(), itemPro()));
-    public static final RegistryObject<Item> JUNGLE_DRYING_RACK = ITEMS.register("jungle_drying_rack",
-            () -> new BlockItem(FloBlocks.JUNGLE_DRYING_RACK.get(), itemPro()));
-    public static final RegistryObject<Item> ACACIA_DRYING_RACK = ITEMS.register("acacia_drying_rack",
-            () -> new BlockItem(FloBlocks.ACACIA_DRYING_RACK.get(), itemPro()));
-    public static final RegistryObject<Item> DARK_OAK_DRYING_RACK = ITEMS.register("dark_oak_drying_rack",
-            () -> new BlockItem(FloBlocks.DARK_OAK_DRYING_RACK.get(), itemPro()));
-    public static final RegistryObject<Item> CRIMSON_DRYING_RACK = ITEMS.register("crimson_stem_drying_rack",
-            () -> new BlockItem(FloBlocks.CRIMSON_STEM_DRYING_RACK.get(), itemPro()));
-    public static final RegistryObject<Item> WARPED_DRYING_RACK = ITEMS.register("warped_stem_drying_rack",
-            () -> new BlockItem(FloBlocks.WARPED_STEM_DRYING_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> OAK_RACK = ITEMS.register("oak_rack",
+            () -> new BlockItem(FloBlocks.OAK_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> SPRUCE_RACK = ITEMS.register("spruce_rack",
+            () -> new BlockItem(FloBlocks.SPRUCE_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> BIRCH_RACK = ITEMS.register("birch_rack",
+            () -> new BlockItem(FloBlocks.BIRCH_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> JUNGLE_RACK = ITEMS.register("jungle_rack",
+            () -> new BlockItem(FloBlocks.JUNGLE_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> ACACIA_RACK = ITEMS.register("acacia_rack",
+            () -> new BlockItem(FloBlocks.ACACIA_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> DARK_OAK_RACK = ITEMS.register("dark_oak_rack",
+            () -> new BlockItem(FloBlocks.DARK_OAK_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> CRIMSON_RACK = ITEMS.register("crimson_rack",
+            () -> new BlockItem(FloBlocks.CRIMSON_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> WARPED_RACK = ITEMS.register("warped_rack",
+            () -> new BlockItem(FloBlocks.WARPED_RACK.get(), itemPro()));
 
     public static Item.Properties itemPro() {
         return new Item.Properties().tab(Tabs.MAIN);

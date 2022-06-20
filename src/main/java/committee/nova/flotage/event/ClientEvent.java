@@ -1,7 +1,7 @@
 package committee.nova.flotage.event;
 
 import committee.nova.flotage.init.FloTileEntities;
-import committee.nova.flotage.tiles.renderer.DyingRackTER;
+import committee.nova.flotage.tiles.renderer.RackTER;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -13,7 +13,7 @@ public class ClientEvent {
     @SubscribeEvent
     public static void onClientEvent(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            ClientRegistry.bindTileEntityRenderer(FloTileEntities.DRYING_TILE.get(), DyingRackTER::new);
+            ClientRegistry.bindTileEntityRenderer(FloTileEntities.RACK_TILE.get(), RackTER::new);
         });
     }
 }

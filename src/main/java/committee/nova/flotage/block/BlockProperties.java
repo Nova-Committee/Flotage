@@ -6,7 +6,7 @@ import net.minecraft.block.material.Material;
 
 public class BlockProperties {
     public static final AbstractBlock.Properties WOOD_BROKEN_RAFT = AbstractBlock.Properties.of(Material.WOOD).strength(1.0F, 1.8F);
-    public static final AbstractBlock.Properties WOOD_DRYING_RACK = AbstractBlock.Properties.of(Material.WOOD).strength(2.2F,2.7F);
+    public static final AbstractBlock.Properties WOOD_RACK = AbstractBlock.Properties.of(Material.WOOD).strength(2.2F,2.7F);
 
     public static AbstractBlock.Properties woodRaft(Block copy) {
         return AbstractBlock.Properties.copy(copy).strength(1.2F, 1.8F);

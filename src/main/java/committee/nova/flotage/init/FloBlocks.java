@@ -54,20 +54,20 @@ public class FloBlocks {
     public static final RegistryObject<Block> WARPED_STEM_FENCE = BLOCKS.register("warped_stem_fence",
             () -> new SimpleFenceBlock(BlockProperties.woodFence(Blocks.WARPED_FENCE)));
 
-    public static final RegistryObject<Block> OAK_DRYING_RACK = BLOCKS.register("oak_drying_rack",
-            () -> new DryingRackBlock(BlockProperties.WOOD_DRYING_RACK));
-    public static final RegistryObject<Block> SPRUCE_DRYING_RACK = BLOCKS.register("spruce_drying_rack",
-            () -> new DryingRackBlock(BlockProperties.WOOD_DRYING_RACK));
-    public static final RegistryObject<Block> BIRCH_DRYING_RACK = BLOCKS.register("birch_drying_rack",
-            () -> new DryingRackBlock(BlockProperties.WOOD_DRYING_RACK));
-    public static final RegistryObject<Block> JUNGLE_DRYING_RACK = BLOCKS.register("jungle_drying_rack",
-            () -> new DryingRackBlock(BlockProperties.WOOD_DRYING_RACK));
-    public static final RegistryObject<Block> ACACIA_DRYING_RACK = BLOCKS.register("acacia_drying_rack",
-            () -> new DryingRackBlock(BlockProperties.WOOD_DRYING_RACK));
-    public static final RegistryObject<Block> DARK_OAK_DRYING_RACK = BLOCKS.register("dark_oak_drying_rack",
-            () -> new DryingRackBlock(BlockProperties.WOOD_DRYING_RACK));
-    public static final RegistryObject<Block> CRIMSON_STEM_DRYING_RACK = BLOCKS.register("crimson_stem_drying_rack",
-            () -> new DryingRackBlock(BlockProperties.WOOD_DRYING_RACK));
-    public static final RegistryObject<Block> WARPED_STEM_DRYING_RACK = BLOCKS.register("warped_stem_drying_rack",
-            () -> new DryingRackBlock(BlockProperties.WOOD_DRYING_RACK));
+    public static final RegistryObject<Block> OAK_RACK = BLOCKS.register("oak_rack",
+            () -> new RackBlock(BlockProperties.WOOD_RACK));
+    public static final RegistryObject<Block> SPRUCE_RACK = BLOCKS.register("spruce_rack",
+            () -> new RackBlock(BlockProperties.WOOD_RACK));
+    public static final RegistryObject<Block> BIRCH_RACK = BLOCKS.register("birch_rack",
+            () -> new RackBlock(BlockProperties.WOOD_RACK));
+    public static final RegistryObject<Block> JUNGLE_RACK = BLOCKS.register("jungle_rack",
+            () -> new RackBlock(BlockProperties.WOOD_RACK));
+    public static final RegistryObject<Block> ACACIA_RACK = BLOCKS.register("acacia_rack",
+            () -> new RackBlock(BlockProperties.WOOD_RACK));
+    public static final RegistryObject<Block> DARK_OAK_RACK = BLOCKS.register("dark_oak_rack",
+            () -> new RackBlock(BlockProperties.WOOD_RACK));
+    public static final RegistryObject<Block> CRIMSON_RACK = BLOCKS.register("crimson_rack",
+            () -> new RackBlock(BlockProperties.WOOD_RACK));
+    public static final RegistryObject<Block> WARPED_RACK = BLOCKS.register("warped_rack",
+            () -> new RackBlock(BlockProperties.WOOD_RACK));
 }

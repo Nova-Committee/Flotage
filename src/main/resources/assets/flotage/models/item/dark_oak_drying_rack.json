@@ -1,8 +1,0 @@
-{
-	"parent": "flotage:base/drying_rack",
-	"textures": {
-		"0": "block/dark_oak_log",
-		"1": "block/dark_oak_log_top",
-		"particle": "block/dark_oak_log"
-	}
-}

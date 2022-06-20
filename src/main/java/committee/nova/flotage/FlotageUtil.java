@@ -8,6 +8,7 @@ public class FlotageUtil {
     public static void register(final IEventBus bus) {
         FloRecipeTypes.register();
         FloTileEntities.TYPES.register(bus);
+        FloContainerTypes.CONTAINERS.register(bus);
         FloRecipes.SERIALIZERS.register(bus);
         FloBlocks.BLOCKS.register(bus);
         FloItems.ITEMS.register(bus);

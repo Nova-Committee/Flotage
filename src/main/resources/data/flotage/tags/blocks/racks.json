@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "flotage:oak_rack",
+    "flotage:spruce_rack",
+    "flotage:birch_rack",
+    "flotage:jungle_rack",
+    "flotage:acacia_rack",
+    "flotage:dark_oak_rack",
+    "flotage:crimson_rack",
+    "flotage:warped_rack"
+  ]
+}

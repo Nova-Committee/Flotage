@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#s#",
+    "s s",
+    "s s"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:crimson_stem"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "flotage:crimson_rack",
+    "count": 2
+  }
+}
