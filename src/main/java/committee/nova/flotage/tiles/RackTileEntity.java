@@ -5,7 +5,6 @@ import committee.nova.flotage.init.FloTileEntities;
 import committee.nova.flotage.recipe.RackRecipe;
 import committee.nova.flotage.tiles.rack.RackMode;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
@@ -13,18 +12,17 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.RecipeItemHelper;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 import java.util.Optional;
 
 public class RackTileEntity extends AbstractRackTileEntity implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
     private static final int[] SLOTS = new int[]{0};
-    private Inventory inventory = new Inventory(1);
+    private Inventory stack = new Inventory(1);
     private int processTime;
     private int totalTime;
     private RackMode mode = RackMode.EMPTY;
@@ -36,30 +34,13 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     }
 
     @Override
-    public void load(BlockState state, CompoundNBT tag) {
-        super.load(state, tag);
-        this.inventory.setItem(0, ItemStack.of(tag.getCompound("RecipeItem")));
-        this.processTime = tag.getInt("ProcessTime");
-        this.totalTime = tag.getInt("TotalTime");
-        this.mode = RackMode.valueOf(tag.getString("Mode"));
-        CompoundNBT recipesUsed = tag.getCompound("RecipesUsed");
-
-        for(String s : recipesUsed.getAllKeys()) {
-            this.recipesUsed.put(new ResourceLocation(s), recipesUsed.getInt(s));
-        }
-    }
-
-    @Nullable
-    @Override
-    public SUpdateTileEntityPacket getUpdatePacket() {
-        return new SUpdateTileEntityPacket(worldPosition, 1, getUpdateTag());
+    public void setChanged() {
+        super.setChanged();
     }
 
     @Override
-    public CompoundNBT getUpdateTag() {
-        CompoundNBT tag = super.getUpdateTag();
-        ItemStack stack = this.inventory.getItem(0).copy();
-        tag.put("RecipeItem", stack.serializeNBT());
+    public CompoundNBT write(CompoundNBT tag) {
+        tag.put("RecipeItem", this.stack.getItem(0).serializeNBT());
         tag.putInt("ProcessTime", this.processTime);
         tag.putInt("TotalTime", this.totalTime);
         tag.putString("Mode", String.valueOf(this.mode).toLowerCase());
@@ -70,17 +51,12 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     }
 
     @Override
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+    public void read(CompoundNBT tag) {
         assert this.level != null;
-        handleUpdateTag(this.level.getBlockState(pkt.getPos()), pkt.getTag());
-    }
-
-    @Override
-    public void handleUpdateTag(BlockState state, CompoundNBT tag) {
-        this.inventory.setItem(0, ItemStack.of(tag.getCompound("RecipeItem")));
+        this.stack.setItem(0, ItemStack.of((CompoundNBT) Objects.requireNonNull(tag.get("RecipeItem"))));
         this.processTime = tag.getInt("ProcessTime");
         this.totalTime = tag.getInt("TotalTime");
-        this.mode = RackMode.valueOf(tag.getString("Mode"));
+        this.mode = RackMode.switchingMode(this.level, this.worldPosition);
         CompoundNBT recipesUsed = tag.getCompound("RecipesUsed");
 
         for(String s : recipesUsed.getAllKeys()) {
@@ -88,51 +64,38 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
         }
     }
 
-    @Override
-    public CompoundNBT save(CompoundNBT tag) {
-        ItemStack stack = this.inventory.getItem(0).copy();
-        tag.put("RecipeItem", stack.serializeNBT());
-        tag.putInt("ProcessTime", this.processTime);
-        tag.putInt("TotalTime", this.totalTime);
-        tag.putString("Mode", String.valueOf(this.mode).toLowerCase());
-        CompoundNBT compoundnbt = new CompoundNBT();
-        this.recipesUsed.forEach((resourceLocation, integer) -> compoundnbt.putInt(resourceLocation.toString(), integer));
-        tag.put("RecipesUsed", compoundnbt);
-        return tag;
-    }
-
-    public Inventory getInventory() {
-        return inventory;
+    public IInventory getInventory() {
+        return stack;
     }
 
     @Override
     public int getContainerSize() {
-        return inventory.getContainerSize();
+        return stack.getContainerSize();
     }
 
     @Override
     public boolean isEmpty() {
-        return inventory.isEmpty();
+        return stack.isEmpty();
     }
 
     @Override
     public ItemStack getItem(int id) {
-        return inventory.getItem(id);
+        return stack.getItem(id);
     }
 
     @Override
     public ItemStack removeItem(int id, int i) {
-        return inventory.removeItem(id, i);
+        return stack.removeItem(id, i);
     }
 
     @Override
     public ItemStack removeItemNoUpdate(int id) {
-        return inventory.removeItemNoUpdate(id);
+        return stack.removeItemNoUpdate(id);
     }
 
     @Override
     public void setItem(int id, ItemStack stack) {
-        inventory.setItem(id, stack);
+        this.stack.setItem(id, stack);
     }
 
     @Override
@@ -157,12 +120,12 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
 
     @Override
     public void clearContent() {
-        this.inventory.clearContent();
+        this.stack.clearContent();
     }
 
     @Override
     public void fillStackedContents(RecipeItemHelper helper) {
-        inventory.fillStackedContents(helper);
+        stack.fillStackedContents(helper);
     }
 
     @Override
@@ -176,9 +139,8 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     @Override
     public void tick() {
         assert this.level != null;
-        this.mode = RackMode.switchingMode(this.level, this.worldPosition);
         if (!this.level.isClientSide) {
-            ItemStack itemstack = this.inventory.getItem(0);
+            ItemStack itemstack = this.stack.getItem(0);
             if (!itemstack.isEmpty() ) {
                 Optional<?> iRecipe = this.level.getRecipeManager().getRecipeFor(this.recipeType, this, this.level);
                 if (iRecipe.isPresent()) {
@@ -186,6 +148,7 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
                         this.totalTime = this.getTotalTime();
                     }
                     ++this.processTime;
+                    this.setRecipeUsed((IRecipe<?>) iRecipe.get());
                     if (this.processTime == this.totalTime) {
                         this.processTime = 0;
                         this.process((IRecipe<?>)iRecipe.get());
@@ -200,13 +163,14 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     private void process(@Nullable IRecipe<?> iRecipe) {
         assert this.level != null;
         assert iRecipe != null;
-        ItemStack itemstack = this.inventory.getItem(0);
+        ItemStack itemstack = this.stack.getItem(0);
         ItemStack itemstack1 = ((IRecipe<ISidedInventory>) iRecipe).assemble(this);
         if (itemstack1 != itemstack) {
             if (!this.level.isClientSide) {
-                this.setRecipeUsed(iRecipe);
                 itemstack1.setCount(itemstack.getCount());
-                this.inventory.setItem(0, itemstack1);
+                this.stack.setItem(0, itemstack1);
+                this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
+                this.setChanged();
             }
         }
     }

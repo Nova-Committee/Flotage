@@ -25,7 +25,7 @@ public class RackTER extends TileEntityRenderer<RackTileEntity> {
         matrixStackIn.scale(0.5f,0.5f,0.5f);
         Quaternion quaternion = Vector3f.XP.rotationDegrees(90);
         matrixStackIn.mulPose(quaternion);
-        ItemStack stack = tile.getInventory().getItem(0).copy();
+        ItemStack stack = tile.getItem(0);
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         IBakedModel ibakedmodel = itemRenderer.getModel(stack, tile.getLevel(), null);
         itemRenderer.render(stack, ItemCameraTransforms.TransformType.FIXED, true, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn, ibakedmodel);
