@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'committee.nova.flotage'
-version = '1.16.5-0.1.0'
+version = '1.16.5-0.1.2'
 
 java {
     archivesBaseName = 'Flotage'
@@ -73,6 +73,10 @@ repositories {
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
+    maven {
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
 }
 
 dependencies {
@@ -80,6 +84,8 @@ dependencies {
 
     compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.116:api")
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.116")
+
+    implementation fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.1.4-22")
 }
 
 jar {

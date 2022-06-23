@@ -7,8 +7,8 @@
   "block.flotage.jungle_log_raft": "Jungle Raft",
   "block.flotage.acacia_log_raft": "Acacia Raft",
   "block.flotage.dark_oak_log_raft": "Dark Oak Raft",
-  "block.flotage.crimson_stem_raft": "Crimson Stem Raft",
-  "block.flotage.warped_stem_raft": "Warped Stem Raft",
+  "block.flotage.crimson_raft": "Crimson Raft",
+  "block.flotage.warped_raft": "Warped Raft",
 
   "block.flotage.oak_log_fence": "Oak Fence",
   "block.flotage.spruce_log_fence": "Spruce Fence",
@@ -16,8 +16,8 @@
   "block.flotage.jungle_log_fence": "Jungle Fence",
   "block.flotage.acacia_log_fence": "Acacia Fence",
   "block.flotage.dark_oak_log_fence": "Dark Oak Fence",
-  "block.flotage.crimson_stem_fence": "Crimson Stem Fence",
-  "block.flotage.warped_stem_fence": "Warped Stem Fence",
+  "block.flotage.crimson_fence": "Crimson Fence",
+  "block.flotage.warped_fence": "Warped Fence",
 
   "block.flotage.rack": "Rack",
   "block.flotage.oak_rack": "Oak Rack",
@@ -35,6 +35,23 @@
   "block.flotage.jungle_broken_raft": "Broken Jungle Raft",
   "block.flotage.acacia_broken_raft": "Broken Acacia Raft",
   "block.flotage.dark_oak_broken_raft": "Broken Dark Oak Raft",
-  "block.flotage.crimson_stem_broken_raft": "Broken Crimson Stem Raft",
-  "block.flotage.warped_stem_broken_raft": "Broken Warped Stem Raft"
+  "block.flotage.crimson_broken_raft": "Broken Crimson Raft",
+  "block.flotage.warped_broken_raft": "Broken Warped Raft",
+
+  "block.flotage.oak_log_crossed_fence": "Oak Crossed Fence",
+  "block.flotage.spruce_log_crossed_fence": "Spruce Crossed Fence",
+  "block.flotage.birch_log_crossed_fence": "Birch Crossed Fence",
+  "block.flotage.jungle_log_crossed_fence": "Jungle Crossed Fence",
+  "block.flotage.acacia_log_crossed_fence": "Acacia Crossed Fence",
+  "block.flotage.dark_oak_log_crossed_fence": "Dark Oak Crossed Fence",
+  "block.flotage.crimson_crossed_fence": "Crimson Crossed Fence",
+  "block.flotage.warped_crossed_fence": "Warped Crossed Fence",
+
+  "gui.flotage.rack.mode.empty": "condition:none",
+  "gui.flotage.rack.mode.sun": "condition:sun",
+  "gui.flotage.rack.mode.night": "condition:night",
+  "gui.flotage.rack.mode.rain": "condition:rain",
+  "gui.flotage.rack.mode.snow": "condition:snow",
+  "gui.flotage.rack.mode.rain_at": "condition:rain at rack",
+  "gui.flotage.rack.mode.snow_at": "condition:snow at rack"
 }

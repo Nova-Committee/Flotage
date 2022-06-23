@@ -1,11 +1,11 @@
 package committee.nova.flotage.block;
 
 import committee.nova.flotage.tiles.RackTileEntity;
+import committee.nova.flotage.util.RackStackHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
@@ -19,17 +19,12 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nullable;
 
-public class RackBlock extends Block {
+public class RackBlock extends Block  {
     public RackBlock(Properties properties) {
         super(properties);
-    }
-
-    public static RackBlock wood() {
-        return new RackBlock(BlockProperties.WOOD_RACK);
     }
 
     @Override
@@ -38,6 +33,16 @@ public class RackBlock extends Block {
         VoxelShape shape2 = Block.box(15,0,0,16,16,1);
         VoxelShape shape3 = Block.box(0,0,15,1,16,16);
         VoxelShape shape4 = Block.box(15,0,15,16,16,16);
+        VoxelShape shape5 = Block.box(0,14.05,0,16,15.5,16);
+        return VoxelShapes.or(shape1,shape2,shape3,shape4,shape5);
+    }
+
+    @Override
+    public VoxelShape getBlockSupportShape(BlockState state, IBlockReader reader, BlockPos pos) {
+        VoxelShape shape1 = Block.box(0,0,0,1,15.5,1);
+        VoxelShape shape2 = Block.box(15,0,0,16,15.5,1);
+        VoxelShape shape3 = Block.box(0,0,15,1,15.5,16);
+        VoxelShape shape4 = Block.box(15,0,15,16,15.5,16);
         VoxelShape shape5 = Block.box(0,14.05,0,16,15.5,16);
         return VoxelShapes.or(shape1,shape2,shape3,shape4,shape5);
     }
@@ -69,38 +74,13 @@ public class RackBlock extends Block {
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
         if (result.getDirection() == Direction.UP && world.getBlockEntity(pos) != null) {
-            RackTileEntity dryingTile = (RackTileEntity) world.getBlockEntity(pos);
-            if (dryingTile != null) {
-                ItemStack handStack = player.getMainHandItem().copy();
-                ItemStack inStack = dryingTile.getItem(0);
-                if (inStack.isEmpty()) {
-                    dryingTile.setItem(0, handStack);
-                    player.getItemInHand(hand).shrink(handStack.getCount());
-                }else {
-                    if (inStack.getItem() == handStack.getItem()) {
-                        if (inStack.getCount() == inStack.getMaxStackSize()) {
-                            return ActionResultType.PASS;
-                        }
-                        int totalQuantity = inStack.getCount() + handStack.getCount();
-                        if (totalQuantity <= inStack.getMaxStackSize()) {
-                            dryingTile.setItem(0, new ItemStack(inStack.getItem(), totalQuantity));
-                            player.getItemInHand(hand).shrink(handStack.getCount());
-                        }else {
-                            dryingTile.setItem(0, new ItemStack(inStack.getItem(), inStack.getMaxStackSize()));
-                            player.getItemInHand(hand).setCount(totalQuantity - inStack.getMaxStackSize());
-                        }
-                    }else {
-                        player.getItemInHand(hand).shrink(handStack.getCount());
-                        ItemHandlerHelper.giveItemToPlayer(player, inStack);
-                        dryingTile.setItem(0, handStack);
-                    }
-                }
-                return ActionResultType.SUCCESS;
+            RackTileEntity tile = (RackTileEntity) world.getBlockEntity(pos);
+            if (tile != null) {
+                return RackStackHelper.use(player, hand, tile);
             }
             return ActionResultType.FAIL;
-        }else {
-            return ActionResultType.PASS;
         }
+        return ActionResultType.PASS;
     }
 
     @Override

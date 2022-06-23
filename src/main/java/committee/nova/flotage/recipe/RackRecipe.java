@@ -13,6 +13,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
@@ -33,7 +34,7 @@ public class RackRecipe implements IRecipe<IInventory> {
         this.ingredient = ingredient;
         this.result = result;
         this.processTime = processTime;
-        this.mode = RackMode.valueOf(mode.toUpperCase());
+        this.mode = RackMode.match(mode);
     }
 
     public int getProcessTime() {
@@ -64,6 +65,10 @@ public class RackRecipe implements IRecipe<IInventory> {
         }
 
         return itemstack;
+    }
+
+    public boolean isRecipeConditionMet(World world, BlockPos pos) {
+        return this.getMode() == RackMode.switchingMode(world, pos);
     }
 
     @Override

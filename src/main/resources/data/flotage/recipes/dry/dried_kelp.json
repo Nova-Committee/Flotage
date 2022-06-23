@@ -1,9 +1,0 @@
-{
-  "type": "flotage:rack",
-  "ingredient": {
-    "item": "minecraft:kelp"
-  },
-  "result": "minecraft:dried_kelp",
-  "mode": "sun",
-  "process_time": 200
-}

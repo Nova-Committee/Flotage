@@ -1,0 +1,12 @@
+{
+  "type": "flotage:rack",
+  "ingredient": {
+    "item": "minecraft:glass_bottle"
+  },
+  "result": {
+    "item": "minecraft:potion",
+    "nbt": "{Potion: \"minecraft:water\"}"
+  },
+  "mode": "rain_at",
+  "process_time": 300
+}
