@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SimpleFenceBlock extends Block implements IWaterLoggable {
-    public static Map<CrossedFenceBlock, SimpleFenceBlock> MAP = new HashMap<>();
+    public static Map<Block, SimpleFenceBlock> MAP = new HashMap<>();
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final DirectionProperty FACING = HorizontalBlock.FACING;
     private final Block crossedFence;
@@ -38,7 +38,7 @@ public class SimpleFenceBlock extends Block implements IWaterLoggable {
         super(properties);
         this.crossedFence = crossedFence;
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH));
-        MAP.put((CrossedFenceBlock) crossedFence, this);
+        MAP.put(crossedFence, this);
     }
 
     @Override
@@ -50,6 +50,9 @@ public class SimpleFenceBlock extends Block implements IWaterLoggable {
                 SimpleFenceBlock fence = (SimpleFenceBlock) blockItem.getBlock();
                 if (fence.is(this)) {
                     world.setBlock(pos, crossedFence.defaultBlockState(), 3);
+                    if (!player.isCreative()) {
+                        handStack.shrink(1);
+                    }
                     return ActionResultType.SUCCESS;
                 }
             }

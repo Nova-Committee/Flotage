@@ -5,15 +5,21 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.PushReaction;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -27,14 +33,12 @@ import java.util.Random;
 
 public class BrokenRaftBlock extends Block implements IWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    private final Item repairItem;
 
-    public BrokenRaftBlock(Properties properties) {
+    public BrokenRaftBlock(Properties properties, Item repairItem) {
         super(properties.noCollission());
+        this.repairItem = repairItem;
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, true));
-    }
-
-    public static BrokenRaftBlock wood() {
-        return new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT);
     }
 
     @Override
@@ -50,6 +54,21 @@ public class BrokenRaftBlock extends Block implements IWaterLoggable {
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
         return Block.box(0, 13.25, 0, 16, 15.25, 16);
+    }
+
+    @Override
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand playerHand, BlockRayTraceResult result) {
+        ItemStack handStack = player.getMainHandItem();
+        if (handStack.getItem() == repairItem) {
+            if (!player.isCreative()) {
+                handStack.shrink(1);
+            }
+            Block block = RaftBlock.MAP.get(this);
+            world.setBlock(pos, block.defaultBlockState(), 3);
+            block.onPlace(state, world, pos, block.defaultBlockState(), false);
+            return ActionResultType.SUCCESS;
+        }
+        return ActionResultType.PASS;
     }
 
     @Override

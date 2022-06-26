@@ -11,14 +11,22 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class FloBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Flotage.MODID);
 
-    public static final RegistryObject<Block> OAK_BROKEN_RAFT = BLOCKS.register("oak_broken_raft", BrokenRaftBlock::wood);
-    public static final RegistryObject<Block> SPRUCE_BROKEN_RAFT = BLOCKS.register("spruce_broken_raft", BrokenRaftBlock::wood);
-    public static final RegistryObject<Block> BIRCH_BROKEN_RAFT = BLOCKS.register("birch_broken_raft", BrokenRaftBlock::wood);
-    public static final RegistryObject<Block> JUNGLE_BROKEN_RAFT = BLOCKS.register("jungle_broken_raft", BrokenRaftBlock::wood);
-    public static final RegistryObject<Block> ACACIA_BROKEN_RAFT = BLOCKS.register("acacia_broken_raft", BrokenRaftBlock::wood);
-    public static final RegistryObject<Block> DARK_OAK_BROKEN_RAFT = BLOCKS.register("dark_oak_broken_raft", BrokenRaftBlock::wood);
-    public static final RegistryObject<Block> CRIMSON_BROKEN_RAFT = BLOCKS.register("crimson_broken_raft", BrokenRaftBlock::wood);
-    public static final RegistryObject<Block> WARPED_BROKEN_RAFT = BLOCKS.register("warped_broken_raft", BrokenRaftBlock::wood);
+    public static final RegistryObject<Block> OAK_BROKEN_RAFT = BLOCKS.register("oak_broken_raft",
+            () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.OAK_LOG.asItem()));
+    public static final RegistryObject<Block> SPRUCE_BROKEN_RAFT = BLOCKS.register("spruce_broken_raft",
+            () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.SPRUCE_LOG.asItem()));
+    public static final RegistryObject<Block> BIRCH_BROKEN_RAFT = BLOCKS.register("birch_broken_raft",
+            () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.BIRCH_LOG.asItem()));
+    public static final RegistryObject<Block> JUNGLE_BROKEN_RAFT = BLOCKS.register("jungle_broken_raft",
+            () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.JUNGLE_LOG.asItem()));
+    public static final RegistryObject<Block> ACACIA_BROKEN_RAFT = BLOCKS.register("acacia_broken_raft",
+            () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.ACACIA_LOG.asItem()));
+    public static final RegistryObject<Block> DARK_OAK_BROKEN_RAFT = BLOCKS.register("dark_oak_broken_raft",
+            () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.DARK_OAK_LOG.asItem()));
+    public static final RegistryObject<Block> CRIMSON_BROKEN_RAFT = BLOCKS.register("crimson_broken_raft",
+            () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.CRIMSON_STEM.asItem()));
+    public static final RegistryObject<Block> WARPED_BROKEN_RAFT = BLOCKS.register("warped_broken_raft",
+            () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.WARPED_STEM.asItem()));
 
     public static final RegistryObject<Block> OAK_LOG_RAFT = BLOCKS.register("oak_log_raft",
             () -> new RaftBlock(BlockProperties.woodRaft(Blocks.OAK_SLAB), OAK_BROKEN_RAFT.get()));

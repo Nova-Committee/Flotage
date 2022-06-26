@@ -87,14 +87,18 @@ public class CrossedFenceBlock extends Block implements IWaterLoggable {
         ItemStack stack = player.getMainHandItem();
         SimpleFenceBlock fenceBlock = SimpleFenceBlock.MAP.get(this);
         if (stack.isEmpty()) {
-            ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(fenceBlock));
-            world.setBlock(pos, fenceBlock.defaultBlockState(), 3);
+            if (!player.isCreative()) {
+                ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(fenceBlock));
+            }
+            world.setBlock(pos, fenceBlock.defaultBlockState().setValue(SimpleFenceBlock.FACING, player.getDirection()), 3);
             return ActionResultType.SUCCESS;
         }else if (stack.getItem() instanceof BlockItem) {
             BlockItem blockItem = (BlockItem) stack.getItem();
             if (blockItem.getBlock() instanceof SimpleFenceBlock) {
-                ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(fenceBlock));
-                world.setBlock(pos, fenceBlock.defaultBlockState(), 3);
+                if (!player.isCreative()) {
+                    ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(fenceBlock));
+                }
+                world.setBlock(pos, fenceBlock.defaultBlockState().setValue(SimpleFenceBlock.FACING, player.getDirection()), 3);
                 return ActionResultType.SUCCESS;
             }
             return ActionResultType.PASS;

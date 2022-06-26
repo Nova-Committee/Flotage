@@ -10,7 +10,6 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.IntArray;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
@@ -35,7 +34,7 @@ public abstract class AbstractRackTileEntity extends BaseTileEntity implements I
     @Override
     public Container createMenu(int sycID, PlayerInventory inventory, PlayerEntity player) {
         assert this.level != null;
-        return new RackContainer(sycID, inventory, this.worldPosition, this.level, new IntArray(0));
+        return new RackContainer(sycID, inventory);
     }
 
     LazyOptional<? extends IItemHandler>[] handlers =

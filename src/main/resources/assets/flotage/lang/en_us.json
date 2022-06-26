@@ -29,6 +29,7 @@
   "block.flotage.crimson_rack": "Crimson Rack",
   "block.flotage.warped_rack": "Warped Rack",
 
+  "block.flotage.rack.destroy_by_rain": "Rack destroyed",
   "block.flotage.oak_broken_raft": "Broken Oak Raft",
   "block.flotage.spruce_broken_raft": "Broken Spruce Raft",
   "block.flotage.birch_broken_raft": "Broken Birch Raft",

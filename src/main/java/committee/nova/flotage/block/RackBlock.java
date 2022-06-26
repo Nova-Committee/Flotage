@@ -37,16 +37,6 @@ public class RackBlock extends Block  {
         return VoxelShapes.or(shape1,shape2,shape3,shape4,shape5);
     }
 
-    @Override
-    public VoxelShape getBlockSupportShape(BlockState state, IBlockReader reader, BlockPos pos) {
-        VoxelShape shape1 = Block.box(0,0,0,1,15.5,1);
-        VoxelShape shape2 = Block.box(15,0,0,16,15.5,1);
-        VoxelShape shape3 = Block.box(0,0,15,1,15.5,16);
-        VoxelShape shape4 = Block.box(15,0,15,16,15.5,16);
-        VoxelShape shape5 = Block.box(0,14.05,0,16,15.5,16);
-        return VoxelShapes.or(shape1,shape2,shape3,shape4,shape5);
-    }
-
     @OnlyIn(Dist.CLIENT)
     public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) {
         return 0.8F;

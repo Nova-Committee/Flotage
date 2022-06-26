@@ -7,16 +7,16 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IntArray;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
 public class RackContainer extends Container {
-    public RackContainer(int id, PlayerInventory inventory, BlockPos pos, World world, IntArray intArray) {
+    public RackContainer(int id, PlayerInventory playerInventory){
+        this(id, playerInventory, new RackTileEntity());
+    }
+
+    public RackContainer(int id, PlayerInventory inventory, RackTileEntity tile) {
         super(FloContainerTypes.DRY_RACK_CONTAINER.get(), id);
-        addDataSlots(intArray);
-        RackTileEntity tile = (RackTileEntity) world.getBlockEntity(pos);
+        addDataSlots(new IntArray(0));
         assert tile != null;
         this.addSlot(new Slot(tile.getInventory(), 0, 80, 32));
         layoutPlayerInventorySlots(inventory, 8, 84);
@@ -25,11 +25,6 @@ public class RackContainer extends Container {
     @Override
     public boolean stillValid(PlayerEntity player) {
         return true;
-    }
-
-    @Override
-    public ItemStack quickMoveStack(PlayerEntity player, int index) {
-        return ItemStack.EMPTY;
     }
 
     private int addSlotRange(IInventory inventory, int index, int x, int y, int amount, int dx) {

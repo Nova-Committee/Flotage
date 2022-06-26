@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'committee.nova.flotage'
-version = '1.16.5-0.1.2'
+version = '1.16.5-0.1.3'
 
 java {
     archivesBaseName = 'Flotage'

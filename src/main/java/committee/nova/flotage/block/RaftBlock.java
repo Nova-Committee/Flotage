@@ -1,5 +1,6 @@
 package committee.nova.flotage.block;
 
+import committee.nova.flotage.init.FloSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -23,16 +24,20 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class RaftBlock extends Block implements IWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static Map<Block, RaftBlock> MAP = new HashMap<>();
     private final Block brokenBlock;
 
     public RaftBlock(Properties properties, Block brokenBlock) {
         super(properties);
         this.brokenBlock = brokenBlock;
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, true));
+        MAP.put(brokenBlock, this);
     }
 
     @Override
@@ -122,6 +127,7 @@ public class RaftBlock extends Block implements IWaterLoggable {
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.isRainingAt(pos.above())) {
+            world.playSound(null, pos, FloSounds.RACK_DESTROYED.get(), SoundCategory.BLOCKS, 2F, 1F);
             world.setBlock(pos, brokenBlock.defaultBlockState(), 3);
         }
     }
