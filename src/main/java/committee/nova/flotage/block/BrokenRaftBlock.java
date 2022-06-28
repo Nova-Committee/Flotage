@@ -96,6 +96,7 @@ public class BrokenRaftBlock extends Block implements IWaterLoggable {
     public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.getValue(BlockStateProperties.WATERLOGGED)) {
             world.destroyBlock(pos, false);
+            dropResources(state, world, pos);
         }
     }
 

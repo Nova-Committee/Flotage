@@ -68,7 +68,7 @@ public class RackRecipe implements IRecipe<IInventory> {
     }
 
     public boolean isRecipeConditionMet(World world, BlockPos pos) {
-        return this.getMode() == RackMode.switchingMode(world, pos);
+        return (this.getMode() == RackMode.switchingMode(world, pos) || this.getMode() == RackMode.EMPTY);
     }
 
     @Override

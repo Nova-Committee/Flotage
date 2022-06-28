@@ -4,6 +4,7 @@ import committee.nova.flotage.Flotage;
 import committee.nova.flotage.block.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.Items;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,6 +24,8 @@ public class FloBlocks {
             () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.ACACIA_LOG.asItem()));
     public static final RegistryObject<Block> DARK_OAK_BROKEN_RAFT = BLOCKS.register("dark_oak_broken_raft",
             () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.DARK_OAK_LOG.asItem()));
+    public static final RegistryObject<Block> BAMBOO_BROKEN_RAFT = BLOCKS.register("bamboo_broken_raft",
+            () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Items.BAMBOO));
     public static final RegistryObject<Block> CRIMSON_BROKEN_RAFT = BLOCKS.register("crimson_broken_raft",
             () -> new BrokenRaftBlock(BlockProperties.WOOD_BROKEN_RAFT, Blocks.CRIMSON_STEM.asItem()));
     public static final RegistryObject<Block> WARPED_BROKEN_RAFT = BLOCKS.register("warped_broken_raft",
@@ -40,6 +43,8 @@ public class FloBlocks {
             () -> new RaftBlock(BlockProperties.woodRaft(Blocks.ACACIA_SLAB), ACACIA_BROKEN_RAFT.get()));
     public static final RegistryObject<Block> DARK_OAK_LOG_RAFT = BLOCKS.register("dark_oak_log_raft",
             () -> new RaftBlock(BlockProperties.woodRaft(Blocks.DARK_OAK_SLAB), DARK_OAK_BROKEN_RAFT.get()));
+    public static final RegistryObject<Block> BAMBOO_RAFT = BLOCKS.register("bamboo_raft",
+            () -> new RaftBlock(BlockProperties.woodRaft(Blocks.BAMBOO), BAMBOO_BROKEN_RAFT.get()));
     public static final RegistryObject<Block> CRIMSON_RAFT = BLOCKS.register("crimson_raft",
             () -> new RaftBlock(BlockProperties.woodRaft(Blocks.CRIMSON_STEM), CRIMSON_BROKEN_RAFT.get()));
     public static final RegistryObject<Block> WARPED_RAFT = BLOCKS.register("warped_raft",

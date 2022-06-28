@@ -1,0 +1,7 @@
+{
+	"parent": "flotage:base/raft",
+	"textures": {
+		"0": "block/bamboo_stalk",
+		"particle": "block/bamboo_stalk"
+	}
+}

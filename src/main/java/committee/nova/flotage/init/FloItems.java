@@ -24,6 +24,8 @@ public class FloItems {
             () -> new RaftItem(FloBlocks.ACACIA_BROKEN_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> DARK_OAK_BROKEN_RAFT = ITEMS.register("dark_oak_broken_raft",
             () -> new RaftItem(FloBlocks.DARK_OAK_BROKEN_RAFT.get(), itemPro()));
+    public static final RegistryObject<Item> BAMBOO_BROKEN_RAFT = ITEMS.register("bamboo_broken_raft",
+            () -> new RaftItem(FloBlocks.BAMBOO_BROKEN_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> CRIMSON_BROKEN_RAFT = ITEMS.register("crimson_broken_raft",
             () -> new RaftItem(FloBlocks.CRIMSON_BROKEN_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> WARPED_BROKEN_RAFT = ITEMS.register("warped_broken_raft",
@@ -41,6 +43,8 @@ public class FloItems {
             () -> new RaftItem(FloBlocks.ACACIA_LOG_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> DARK_OAK_LOG_RAFT = ITEMS.register("dark_oak_log_raft",
             () -> new RaftItem(FloBlocks.DARK_OAK_LOG_RAFT.get(), itemPro()));
+    public static final RegistryObject<Item> BAMBOO_RAFT = ITEMS.register("bamboo_raft",
+            () -> new RaftItem(FloBlocks.BAMBOO_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> CRIMSON_RAFT = ITEMS.register("crimson_raft",
             () -> new RaftItem(FloBlocks.CRIMSON_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> WARPED_RAFT = ITEMS.register("warped_raft",

@@ -3,7 +3,6 @@ package committee.nova.flotage.tiles;
 import committee.nova.flotage.init.FloRecipeTypes;
 import committee.nova.flotage.init.FloTileEntities;
 import committee.nova.flotage.recipe.RackRecipe;
-import committee.nova.flotage.tiles.rack.RackMode;
 import committee.nova.flotage.util.RackStackHelper;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.entity.player.PlayerEntity;
@@ -153,7 +152,7 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
                 if (hasRecipe(this.level)) {
                     RackRecipe recipe = getNowRecipe(this.level);
                     this.totalTime = recipe.getProcessTime();
-                    if (recipe.isRecipeConditionMet(this.level, this.worldPosition) || recipe.getMode() == RackMode.EMPTY) {
+                    if (recipe.isRecipeConditionMet(this.level, this.worldPosition)) {
                         ++this.processTime;
                         this.setRecipeUsed(recipe);
                         if (this.processTime == this.totalTime) {

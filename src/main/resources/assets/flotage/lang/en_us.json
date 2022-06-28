@@ -7,6 +7,7 @@
   "block.flotage.jungle_log_raft": "Jungle Raft",
   "block.flotage.acacia_log_raft": "Acacia Raft",
   "block.flotage.dark_oak_log_raft": "Dark Oak Raft",
+  "block.flotage.bamboo_raft": "Bamboo Raft",
   "block.flotage.crimson_raft": "Crimson Raft",
   "block.flotage.warped_raft": "Warped Raft",
 
@@ -36,6 +37,7 @@
   "block.flotage.jungle_broken_raft": "Broken Jungle Raft",
   "block.flotage.acacia_broken_raft": "Broken Acacia Raft",
   "block.flotage.dark_oak_broken_raft": "Broken Dark Oak Raft",
+  "block.flotage.bamboo_broken_raft": "Broken Bamboo Raft",
   "block.flotage.crimson_broken_raft": "Broken Crimson Raft",
   "block.flotage.warped_broken_raft": "Broken Warped Raft",
 
@@ -48,11 +50,11 @@
   "block.flotage.crimson_crossed_fence": "Crimson Crossed Fence",
   "block.flotage.warped_crossed_fence": "Warped Crossed Fence",
 
-  "gui.flotage.rack.mode.empty": "condition:none",
-  "gui.flotage.rack.mode.sun": "condition:sun",
-  "gui.flotage.rack.mode.night": "condition:night",
-  "gui.flotage.rack.mode.rain": "condition:rain",
-  "gui.flotage.rack.mode.snow": "condition:snow",
-  "gui.flotage.rack.mode.rain_at": "condition:rain at rack",
-  "gui.flotage.rack.mode.snow_at": "condition:snow at rack"
+  "gui.flotage.rack.mode.empty": "Condition:none",
+  "gui.flotage.rack.mode.sun": "Condition:sun",
+  "gui.flotage.rack.mode.night": "Condition:night",
+  "gui.flotage.rack.mode.rain": "Condition:rain",
+  "gui.flotage.rack.mode.snow": "Condition:snow",
+  "gui.flotage.rack.mode.rain_at": "Condition:rain at rack",
+  "gui.flotage.rack.mode.snow_at": "Condition:snow at rack"
 }
