@@ -56,5 +56,7 @@
   "gui.flotage.rack.mode.rain": "Condition:rain",
   "gui.flotage.rack.mode.snow": "Condition:snow",
   "gui.flotage.rack.mode.rain_at": "Condition:rain at rack",
-  "gui.flotage.rack.mode.snow_at": "Condition:snow at rack"
+  "gui.flotage.rack.mode.snow_at": "Condition:snow at rack",
+
+  "tip.flotage.rack_process": "Process: $s"
 }

@@ -56,5 +56,7 @@
   "gui.flotage.rack.mode.rain": "条件:下雨",
   "gui.flotage.rack.mode.snow": "条件:下雪",
   "gui.flotage.rack.mode.rain_at": "条件:淋雨",
-  "gui.flotage.rack.mode.snow_at": "条件:淋雪"
+  "gui.flotage.rack.mode.snow_at": "条件:淋雪",
+
+  "tip.flotage.rack_process": "进展: $s"
 }

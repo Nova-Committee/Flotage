@@ -10,7 +10,6 @@ public class FlotageUtil {
         FloTileEntities.TYPES.register(bus);
         FloContainerTypes.CONTAINERS.register(bus);
         FloRecipes.SERIALIZERS.register(bus);
-        FloSounds.SOUNDS.register(bus);
         FloBlocks.BLOCKS.register(bus);
         FloItems.ITEMS.register(bus);
     }

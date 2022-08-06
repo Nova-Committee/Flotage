@@ -1,7 +1,7 @@
 package committee.nova.flotage.block;
 
 import committee.nova.flotage.tiles.RackTileEntity;
-import committee.nova.flotage.util.RackStackHelper;
+import committee.nova.flotage.util.StackHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -66,7 +66,7 @@ public class RackBlock extends Block  {
         if (result.getDirection() == Direction.UP && world.getBlockEntity(pos) != null) {
             RackTileEntity tile = (RackTileEntity) world.getBlockEntity(pos);
             if (tile != null) {
-                return RackStackHelper.use(player, hand, tile);
+                return StackHelper.use(player, hand, tile);
             }
             return ActionResultType.FAIL;
         }

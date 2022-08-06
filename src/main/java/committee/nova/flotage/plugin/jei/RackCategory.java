@@ -7,7 +7,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import committee.nova.flotage.FlotageUtil;
 import committee.nova.flotage.init.FloBlocks;
 import committee.nova.flotage.recipe.RackRecipe;
-import committee.nova.flotage.tiles.rack.RackMode;
+import committee.nova.flotage.util.rack.RackMode;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;

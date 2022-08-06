@@ -69,4 +69,16 @@ public class RaftItem extends BlockItem {
     protected boolean canPlaceIn(BlockState state) {
         return state == Blocks.WATER.defaultBlockState();
     }
+
+
+    @Override
+    public ItemStack getContainerItem(ItemStack itemstack) {
+        ItemStack retval = new ItemStack(this);
+        retval.setDamageValue(itemstack.getDamageValue() + 1);
+        if (retval.getDamageValue() >= retval.getMaxDamage()) {
+            return ItemStack.EMPTY;
+        }
+        return retval;
+    }
+
 }

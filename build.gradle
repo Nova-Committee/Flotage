@@ -7,11 +7,10 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
-
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'committee.nova.flotage'
-version = '1.16.5-0.1.4'
+version = '1.16.5-0.1.5'
 
 java {
     archivesBaseName = 'Flotage'
@@ -70,12 +69,18 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
+        name "Progwml6 maven"
+        url "https://dvs1.progwml6.com/files/maven/"
     }
     maven {
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
+    }
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
     }
 }
 
@@ -85,7 +90,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.116:api")
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.116")
 
-    implementation fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.1.4-22")
+    implementation fg.deobf("curse.maven:jade-324717:3597364")
 }
 
 jar {

@@ -1,6 +1,5 @@
 package committee.nova.flotage.block;
 
-import committee.nova.flotage.init.FloSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -128,7 +127,6 @@ public class RaftBlock extends Block implements IWaterLoggable {
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.isRainingAt(pos.above())) {
-            world.playSound(null, pos, FloSounds.RACK_DESTROYED.get(), SoundCategory.BLOCKS, 2F, 1F);
             world.setBlock(pos, brokenBlock.defaultBlockState(), 3);
         }
     }

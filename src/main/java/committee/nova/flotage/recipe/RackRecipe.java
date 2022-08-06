@@ -4,7 +4,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import committee.nova.flotage.init.FloRecipeTypes;
-import committee.nova.flotage.tiles.rack.RackMode;
+import committee.nova.flotage.init.FloRecipes;
+import committee.nova.flotage.util.rack.RackMode;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.*;
@@ -88,7 +89,7 @@ public class RackRecipe implements IRecipe<IInventory> {
 
     @Override
     public IRecipeSerializer<?> getSerializer() {
-        return null;
+        return FloRecipes.RACK_RECIPE.get();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package committee.nova.flotage.tiles.rack;
+package committee.nova.flotage.util.rack;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

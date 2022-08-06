@@ -13,7 +13,7 @@ public class FloRecipeTypes {
         RACK_RECIPE_TYPE = register("rack");
     }
 
-    static <T extends IRecipe<?>> IRecipeType<T> register(final String id) {
+    static <T extends IRecipe<?>> IRecipeType<T> register(String id) {
         return Registry.register(Registry.RECIPE_TYPE, FlotageUtil.modRL(id), new IRecipeType<T>() {
             public String toString() {
                 return id;

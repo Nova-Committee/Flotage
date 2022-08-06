@@ -2,7 +2,7 @@ package committee.nova.flotage.init;
 
 import committee.nova.flotage.Flotage;
 import committee.nova.flotage.item.RaftItem;
-import committee.nova.flotage.item.Tabs;
+import committee.nova.flotage.util.FloTabs;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
@@ -102,7 +102,7 @@ public class FloItems {
             () -> new BlockItem(FloBlocks.WARPED_RACK.get(), itemPro()));
 
     public static Item.Properties itemPro() {
-        return new Item.Properties().tab(Tabs.MAIN);
+        return new Item.Properties().tab(FloTabs.MAIN);
     }
 
     public static Item.Properties nuPro() {
