@@ -1,0 +1,9 @@
+{
+  "type": "flotage:rack",
+  "ingredient": {
+    "item": "minecraft:bucket"
+  },
+  "result": "minecraft:water_bucket",
+  "mode": "rain_at",
+  "process_time": 900
+}

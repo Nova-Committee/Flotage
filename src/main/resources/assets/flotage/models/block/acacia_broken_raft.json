@@ -1,0 +1,7 @@
+{
+	"parent": "flotage:base/broken_raft",
+	"textures": {
+		"0": "block/acacia_log",
+		"particle": "block/acacia_log"
+	}
+}
