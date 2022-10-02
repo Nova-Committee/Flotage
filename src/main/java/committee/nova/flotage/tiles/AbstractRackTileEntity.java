@@ -43,8 +43,7 @@ public abstract class AbstractRackTileEntity extends BaseTileEntity implements I
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
         if (!this.remove && facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            if (facing == Direction.UP || facing == Direction.DOWN)
-                return handlers[0].cast();
+            return handlers[0].cast();
         }
         return super.getCapability(capability, facing);
     }

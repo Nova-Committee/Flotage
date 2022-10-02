@@ -133,4 +133,9 @@ public class RackRecipe implements IRecipe<IInventory> {
             buffer.writeUtf(String.valueOf(recipe.mode));
         }
     }
+
+    @Override
+    public boolean isSpecial() {
+        return true;
+    }
 }

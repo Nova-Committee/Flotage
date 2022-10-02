@@ -39,7 +39,7 @@ public class RackBlock extends Block  {
 
     @OnlyIn(Dist.CLIENT)
     public float getShadeBrightness(BlockState state, IBlockReader reader, BlockPos pos) {
-        return 0.8F;
+        return 0.2F;
     }
 
     public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {

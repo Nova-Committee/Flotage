@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'committee.nova.flotage'
-version = '1.16.5-0.1.5'
+version = '1.16.5-0.1.6'
 
 java {
     archivesBaseName = 'Flotage'
@@ -69,18 +69,25 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        name "Progwml6 maven"
-        url "https://dvs1.progwml6.com/files/maven/"
-    }
-    maven {
-        name 'tterrag maven'
-        url "https://maven.tterrag.com/"
-    }
-    maven {
+        allowInsecureProtocol = true
         url "https://www.cursemaven.com"
         content {
             includeGroup "curse.maven"
         }
+    }
+    maven {
+        allowInsecureProtocol = true
+        name 'DVS1 Maven FS'
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+    maven {
+        allowInsecureProtocol = true
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
+    maven {
+        allowInsecureProtocol = true
+        url 'https://www.jitpack.io'
     }
 }
 

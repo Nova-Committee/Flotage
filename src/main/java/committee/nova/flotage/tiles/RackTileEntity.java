@@ -27,9 +27,10 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     protected final IRecipeType<RackRecipe> recipeType = FloRecipeTypes.RACK_RECIPE_TYPE;
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
     private static final int[] SLOTS = new int[]{0};
-    private final Inventory stacks = new Inventory(1);
+    private final Inventory STACKS = new Inventory(1);
     private int totalTime;
     private int processTime;
+
 
     public RackTileEntity() {
         super(FloTileEntities.RACK_TILE.get());
@@ -37,7 +38,8 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
 
     @Override
     public CompoundNBT write(CompoundNBT tag) {
-        tag.put("RecipeItem", this.stacks.getItem(0).serializeNBT());
+        ItemStack stack = this.STACKS.getItem(0);
+        tag.put("RecipeItem", stack.serializeNBT());
         tag.putInt("TotalTime", this.totalTime);
         tag.putInt("ProcessTime", this.processTime);
 
@@ -50,12 +52,12 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     @Override
     public void read(CompoundNBT tag) {
         assert this.level != null;
-        this.stacks.setItem(0, ItemStack.of((CompoundNBT) Objects.requireNonNull(tag.get("RecipeItem"))));
+        this.STACKS.setItem(0, ItemStack.of((CompoundNBT) Objects.requireNonNull(tag.get("RecipeItem"))));
         this.totalTime = tag.getInt("TotalTime");
         this.processTime = tag.getInt("ProcessTime");
 
         CompoundNBT recipesUsed = tag.getCompound("RecipesUsed");
-        for(String s : recipesUsed.getAllKeys()) {
+        for (String s : recipesUsed.getAllKeys()) {
             this.recipesUsed.put(new ResourceLocation(s), recipesUsed.getInt(s));
         }
     }
@@ -69,37 +71,37 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     }
 
     public IInventory getInventory() {
-        return stacks;
+        return STACKS;
     }
 
     @Override
     public int getContainerSize() {
-        return stacks.getContainerSize();
+        return STACKS.getContainerSize();
     }
 
     @Override
     public boolean isEmpty() {
-        return stacks.isEmpty();
+        return STACKS.isEmpty();
     }
 
     @Override
     public ItemStack getItem(int id) {
-        return stacks.getItem(id);
+        return STACKS.getItem(id);
     }
 
     @Override
     public ItemStack removeItem(int id, int i) {
-        return stacks.removeItem(id, i);
+        return STACKS.removeItem(id, i);
     }
 
     @Override
     public ItemStack removeItemNoUpdate(int id) {
-        return stacks.removeItemNoUpdate(id);
+        return STACKS.removeItemNoUpdate(id);
     }
 
     @Override
     public void setItem(int id, ItemStack stack) {
-        this.stacks.setItem(id, stack);
+        this.STACKS.setItem(id, stack);
     }
 
     @Override
@@ -114,15 +116,18 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
 
     @Override
     public void setChanged() {
+        assert this.level != null;
+        this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 233);
+        STACKS.setChanged();
         super.setChanged();
     }
 
     @Override
     public boolean canPlaceItemThroughFace(int index, ItemStack stack, @Nullable Direction direction) {
         if (Objects.requireNonNull(ItemTags.getAllTags().getTag(FlotageUtil.modRL("unstackable"))).contains(stack.getItem())) {
-            return this.stacks.getItem(0).getCount() < 1;
+            return this.STACKS.getItem(0).getCount() < 1;
         }
-        if (stack.getCount() + this.stacks.getItem(0).getCount() > StackHelper.defLimitAmount)
+        if (stack.getCount() + this.STACKS.getItem(0).getCount() > StackHelper.defLimitAmount)
             return false;
         return (direction != Direction.DOWN && index == 0);
     }
@@ -134,12 +139,12 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
 
     @Override
     public void clearContent() {
-        this.stacks.clearContent();
+        this.STACKS.clearContent();
     }
 
     @Override
     public void fillStackedContents(RecipeItemHelper helper) {
-        stacks.fillStackedContents(helper);
+        STACKS.fillStackedContents(helper);
     }
 
     @Override
@@ -154,10 +159,10 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     public void tick() {
         assert this.level != null;
         if (!this.level.isClientSide) {
-            ItemStack itemstack = this.stacks.getItem(0);
+            ItemStack itemstack = this.STACKS.getItem(0);
             if (!itemstack.isEmpty()) {
-                this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
                 Optional<RackRecipe> iRecipe = level.getRecipeManager().getRecipeFor(this.recipeType, this, this.level);
+                this.setChanged();
                 if (iRecipe.isPresent()) {
                     RackRecipe recipe = iRecipe.get();
                     this.totalTime = recipe.getProcessTime();
@@ -178,14 +183,13 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     }
 
     private void process(World world, RackRecipe iRecipe) {
-        ItemStack itemstack = this.stacks.getItem(0);
+        ItemStack itemstack = this.STACKS.getItem(0);
         ItemStack itemstack1 = iRecipe.assemble(this);
         if (itemstack1 != itemstack) {
             if (!world.isClientSide) {
                 int i = Math.min(itemstack.getCount(), StackHelper.defLimitAmount);
                 itemstack1.setCount(i);
-                this.stacks.setItem(0, itemstack1);
-                this.setChanged();
+                this.STACKS.setItem(0, itemstack1);
                 this.recipesUsed.clear();
             }
         }
