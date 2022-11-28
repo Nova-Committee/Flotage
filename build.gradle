@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'committee.nova.flotage'
-version = '1.16.5-0.1.6'
+version = '1.16.5-0.1.7'
 
 java {
     archivesBaseName = 'Flotage'
@@ -87,17 +87,21 @@ repositories {
     }
     maven {
         allowInsecureProtocol = true
-        url 'https://www.jitpack.io'
+        name 'CraftTweaker'
+        url('https://maven.blamejared.com')
     }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.34'
 
+    compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.510")
     compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.116:api")
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.116")
+    runtimeOnly fg.deobf("curse.maven:jade-324717:3597364")
 
-    implementation fg.deobf("curse.maven:jade-324717:3597364")
+    compileOnly fg.deobf("curse.maven:kubejs-238086:3647098")
+    compileOnly fg.deobf("curse.maven:rhino-416294:3525704")
 }
 
 jar {

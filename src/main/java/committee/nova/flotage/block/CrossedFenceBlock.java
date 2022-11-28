@@ -7,7 +7,6 @@ import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
@@ -92,16 +91,6 @@ public class CrossedFenceBlock extends Block implements IWaterLoggable {
             }
             world.setBlock(pos, fenceBlock.defaultBlockState().setValue(SimpleFenceBlock.FACING, player.getDirection()), 3);
             return ActionResultType.SUCCESS;
-        }else if (stack.getItem() instanceof BlockItem) {
-            BlockItem blockItem = (BlockItem) stack.getItem();
-            if (blockItem.getBlock() instanceof SimpleFenceBlock) {
-                if (!player.isCreative()) {
-                    ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(fenceBlock));
-                }
-                world.setBlock(pos, fenceBlock.defaultBlockState().setValue(SimpleFenceBlock.FACING, player.getDirection()), 3);
-                return ActionResultType.SUCCESS;
-            }
-            return ActionResultType.PASS;
         }
         return ActionResultType.PASS;
     }

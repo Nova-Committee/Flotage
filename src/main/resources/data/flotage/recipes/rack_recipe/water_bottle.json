@@ -8,5 +8,5 @@
     "nbt": "{Potion: \"minecraft:water\"}"
   },
   "mode": "rain_at",
-  "process_time": 300
+  "processtime": 300
 }

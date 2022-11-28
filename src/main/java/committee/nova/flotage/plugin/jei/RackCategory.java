@@ -108,8 +108,8 @@ public class RackCategory implements IRecipeCategory<RackRecipe> {
     public void draw(RackRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
         IDrawableAnimated arrow = this.getArrow(recipe);
         arrow.draw(matrixStack, 67, 18);
-        this.drawDryTime(recipe, matrixStack, 45);
-        this.drawMode(recipe, matrixStack, 35);
+        this.drawDryTime(recipe, matrixStack, 47);
+        this.drawMode(recipe, matrixStack, 37);
     }
 
     @Override

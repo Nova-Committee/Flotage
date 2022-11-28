@@ -110,7 +110,7 @@ public class RackRecipe implements IRecipe<IInventory> {
                 ResourceLocation resourcelocation = new ResourceLocation(s1);
                 itemstack = new ItemStack(Registry.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + s1 + " does not exist")));
             }
-            int i = JSONUtils.getAsInt(object, "process_time", 200);
+            int i = JSONUtils.getAsInt(object, "processtime", 200);
             String s = JSONUtils.getAsString(object, "mode", "empty");
             return new RackRecipe(id, ingredient, itemstack, i, s);
         }

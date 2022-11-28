@@ -60,7 +60,7 @@ public class BrokenRaftBlock extends Block implements IWaterLoggable {
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand playerHand, BlockRayTraceResult result) {
         ItemStack handStack = player.getMainHandItem();
         if (handStack.getItem() == repairItem) {
-            if (!player.isCreative()) {
+            if (!player.isCreative() && new Random().nextFloat() < 0.3) {
                 handStack.shrink(1);
             }
             Block block = RaftBlock.MAP.get(this);
