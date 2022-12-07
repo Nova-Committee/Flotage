@@ -7,6 +7,7 @@
   "block.flotage.jungle_log_raft": "丛林木木筏",
   "block.flotage.acacia_log_raft": "金合欢木木筏",
   "block.flotage.dark_oak_log_raft": "深色橡木木筏",
+  "block.flotage.bamboo_raft": "竹筏",
   "block.flotage.crimson_raft": "绯红木木筏",
   "block.flotage.warped_raft": "诡异木木筏",
 
@@ -36,6 +37,7 @@
   "block.flotage.jungle_broken_raft": "损坏的丛林木木筏",
   "block.flotage.acacia_broken_raft": "损坏的金合欢木木筏",
   "block.flotage.dark_oak_broken_raft": "损坏的深色橡木木筏",
+  "block.flotage.bamboo_broken_raft": "损坏的竹筏",
   "block.flotage.crimson_broken_raft": "损坏的绯红木木筏",
   "block.flotage.warped_broken_raft": "损坏的诡异木木筏",
 
@@ -48,11 +50,15 @@
   "block.flotage.crimson_crossed_fence": "绯红木十字栅栏",
   "block.flotage.warped_crossed_fence": "诡异木十字栅栏",
 
-  "gui.flotage.rack.mode.empty": "条件:无",
-  "gui.flotage.rack.mode.sun": "条件:晴天",
-  "gui.flotage.rack.mode.night": "条件:夜晚",
-  "gui.flotage.rack.mode.rain": "条件:下雨",
-  "gui.flotage.rack.mode.snow": "条件:下雪",
-  "gui.flotage.rack.mode.rain_at": "条件:淋雨",
-  "gui.flotage.rack.mode.snow_at": "条件:淋雪"
+  "gui.flotage.rack.mode.empty": "条件/模式:无",
+  "gui.flotage.rack.mode.sun": "条件/模式:晴天",
+  "gui.flotage.rack.mode.night": "条件/模式:夜晚",
+  "gui.flotage.rack.mode.rain": "条件/模式:下雨",
+  "gui.flotage.rack.mode.snow": "条件/模式:下雪",
+  "gui.flotage.rack.mode.rain_at": "条件/模式:淋雨",
+  "gui.flotage.rack.mode.snow_at": "条件/模式:淋雪",
+
+  "tip.flotage.rack_process": "进展: $s ",
+
+  "container.flotage.rack": "木筏"
 }

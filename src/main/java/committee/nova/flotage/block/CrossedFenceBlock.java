@@ -5,7 +5,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -22,9 +21,11 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.items.ItemHandlerHelper;
+
+import static net.minecraft.world.phys.shapes.Shapes.or;
+
 
 public class CrossedFenceBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -36,7 +37,7 @@ public class CrossedFenceBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        return Shapes.or(SimpleFenceBlock.createShape(true), SimpleFenceBlock.createShape(false));
+        return or(SimpleFenceBlock.createShape(true), SimpleFenceBlock.createShape(false));
     }
 
     @Override
@@ -92,15 +93,6 @@ public class CrossedFenceBlock extends Block implements SimpleWaterloggedBlock {
             }
             world.setBlock(pos, fenceBlock.defaultBlockState().setValue(SimpleFenceBlock.FACING, player.getDirection()), 3);
             return InteractionResult.SUCCESS;
-        }else if (stack.getItem() instanceof BlockItem blockItem) {
-            if (blockItem.getBlock() instanceof SimpleFenceBlock) {
-                if (!player.isCreative()) {
-                    ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(fenceBlock));
-                }
-                world.setBlock(pos, fenceBlock.defaultBlockState().setValue(SimpleFenceBlock.FACING, player.getDirection()), 3);
-                return InteractionResult.SUCCESS;
-            }
-            return InteractionResult.PASS;
         }
         return InteractionResult.PASS;
     }

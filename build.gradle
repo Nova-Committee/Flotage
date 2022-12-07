@@ -2,9 +2,12 @@ buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
         mavenCentral()
+        jcenter()
+        maven { url = 'https://maven.parchmentmc.org' }
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: "${forgegradle_version}", changing: false
+        classpath "org.parchmentmc:librarian:${librarian_version}"
     }
 }
 
@@ -12,16 +15,18 @@ plugins {
     id 'idea'
     id 'maven-publish'
 }
-apply plugin: 'net.minecraftforge.gradle'
 
-version = '1.18.2-0.1.4'
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
+
+version = '1.18.2-0.2.1'
 group = 'committee.nova.flotage'
 archivesBaseName = 'Flotage'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'official', version: '1.18.2'
+    mappings channel: 'parchment', version: "${parchment_version}-${minecraft_version}"
 
     runs {
         client {
@@ -91,12 +96,31 @@ repositories {
         name 'Progwml6 maven'
         url 'https://dvs1.progwml6.com/files/maven'
     }
+    maven {
+        allowInsecureProtocol = true
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.1.80'
 
-    runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.5.3.143")
+    compileOnly fg.deobf("curse.maven:kubejs-238086:4118107")
+    compileOnly fg.deobf("curse.maven:rhino-416294:4069880")
+    compileOnly fg.deobf("curse.maven:crafttweaker-239197:4050366")
+    implementation fg.deobf("curse.maven:jade-324717:4082408")
+    implementation fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+compileJava {
+    options.compilerArgs = ['-Xdiags:verbose']
 }
 
 jar {

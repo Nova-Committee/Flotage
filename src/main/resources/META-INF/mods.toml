@@ -1,11 +1,19 @@
 modLoader="javafml"
 loaderVersion="[40,)"
 license="MIT"
+
 [[mods]]
 modId="flotage"
 version="${file.jarVersion}"
 displayName="Flotage"
 authors="Nova Committee,Chemiofitor"
+logoFile="icon.png"
+logoBlur=true
+displayURL="https://www.curseforge.com/minecraft/mc-mods/flotage"
+description='''
+Are you troubled by not being able to easily set up camp at sea?
+Just ues the raft!
+'''
 
 [[dependencies.flotage]]
    modId="forge"
@@ -13,3 +21,6 @@ authors="Nova Committee,Chemiofitor"
    versionRange="[40,)"
    ordering="NONE"
    side="BOTH"
+
+[modproperties.flotage]
+catalogueImageIcon="flotage:oak_rack"

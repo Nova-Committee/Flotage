@@ -11,6 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class FloItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Flotage.MODID);
+
     public static final RegistryObject<Item> OAK_BROKEN_RAFT = ITEMS.register("oak_broken_raft",
             () -> new RaftItem(FloBlocks.OAK_BROKEN_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> SPRUCE_BROKEN_RAFT = ITEMS.register("spruce_broken_raft",
@@ -23,6 +24,8 @@ public class FloItems {
             () -> new RaftItem(FloBlocks.ACACIA_BROKEN_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> DARK_OAK_BROKEN_RAFT = ITEMS.register("dark_oak_broken_raft",
             () -> new RaftItem(FloBlocks.DARK_OAK_BROKEN_RAFT.get(), itemPro()));
+    public static final RegistryObject<Item> BAMBOO_BROKEN_RAFT = ITEMS.register("bamboo_broken_raft",
+            () -> new RaftItem(FloBlocks.BAMBOO_BROKEN_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> CRIMSON_BROKEN_RAFT = ITEMS.register("crimson_broken_raft",
             () -> new RaftItem(FloBlocks.CRIMSON_BROKEN_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> WARPED_BROKEN_RAFT = ITEMS.register("warped_broken_raft",
@@ -40,6 +43,8 @@ public class FloItems {
             () -> new RaftItem(FloBlocks.ACACIA_LOG_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> DARK_OAK_LOG_RAFT = ITEMS.register("dark_oak_log_raft",
             () -> new RaftItem(FloBlocks.DARK_OAK_LOG_RAFT.get(), itemPro()));
+    public static final RegistryObject<Item> BAMBOO_RAFT = ITEMS.register("bamboo_raft",
+            () -> new RaftItem(FloBlocks.BAMBOO_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> CRIMSON_RAFT = ITEMS.register("crimson_raft",
             () -> new RaftItem(FloBlocks.CRIMSON_RAFT.get(), itemPro()));
     public static final RegistryObject<Item> WARPED_RAFT = ITEMS.register("warped_raft",
@@ -78,6 +83,23 @@ public class FloItems {
             () -> new BlockItem(FloBlocks.CRIMSON_CROSSED_FENCE.get(), nuPro()));
     public static final RegistryObject<Item> WARPED_CROSSED_FENCE = ITEMS.register("warped_crossed_fence",
             () -> new BlockItem(FloBlocks.WARPED_CROSSED_FENCE.get(), nuPro()));
+
+    public static final RegistryObject<Item> OAK_RACK = ITEMS.register("oak_rack",
+            () -> new BlockItem(FloBlocks.OAK_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> SPRUCE_RACK = ITEMS.register("spruce_rack",
+            () -> new BlockItem(FloBlocks.SPRUCE_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> BIRCH_RACK = ITEMS.register("birch_rack",
+            () -> new BlockItem(FloBlocks.BIRCH_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> JUNGLE_RACK = ITEMS.register("jungle_rack",
+            () -> new BlockItem(FloBlocks.JUNGLE_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> ACACIA_RACK = ITEMS.register("acacia_rack",
+            () -> new BlockItem(FloBlocks.ACACIA_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> DARK_OAK_RACK = ITEMS.register("dark_oak_rack",
+            () -> new BlockItem(FloBlocks.DARK_OAK_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> CRIMSON_RACK = ITEMS.register("crimson_rack",
+            () -> new BlockItem(FloBlocks.CRIMSON_RACK.get(), itemPro()));
+    public static final RegistryObject<Item> WARPED_RACK = ITEMS.register("warped_rack",
+            () -> new BlockItem(FloBlocks.WARPED_RACK.get(), itemPro()));
 
     public static Item.Properties itemPro() {
         return new Item.Properties().tab(Tabs.MAIN);

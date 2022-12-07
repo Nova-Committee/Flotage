@@ -20,13 +20,15 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static net.minecraft.world.phys.shapes.Shapes.or;
 
 public class SimpleFenceBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -79,7 +81,7 @@ public class SimpleFenceBlock extends Block implements SimpleWaterloggedBlock {
             shape3 = Block.box(0,5.5,7,16, 7.5, 9);
             shape4 = Block.box(0,11,7,16, 13, 9);
         }
-        return Shapes.or(shape1, shape2, shape3, shape4);
+        return or(shape1, shape2, shape3, shape4);
     }
 
     @Override
@@ -132,5 +134,10 @@ public class SimpleFenceBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+        return false;
     }
 }
