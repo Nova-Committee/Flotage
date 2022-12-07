@@ -6,6 +6,9 @@ modId="flotage"
 version="${file.jarVersion}"
 displayName="Flotage"
 authors="Nova Committee,Chemiofitor"
+description='''
+Floating in the sea.
+'''
 [[dependencies.flotage]]
    modId="forge"
    mandatory=true

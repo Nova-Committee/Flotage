@@ -33,7 +33,7 @@ public enum RackMode {
                 }
                 return RAIN;
             }else {
-                if (world.isDay()) {
+                if (world.isDay() && world.canSeeSky(pos)) {
                     return SUN;
                 }
                 return NIGHT;

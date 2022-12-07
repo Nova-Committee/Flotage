@@ -28,6 +28,7 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
     private static final int[] SLOTS = new int[]{0};
     private final Inventory STACKS = new Inventory(1);
+    private Direction itemDirection = Direction.UP;
     private int totalTime;
     private int processTime;
 
@@ -42,6 +43,7 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
         tag.put("RecipeItem", stack.serializeNBT());
         tag.putInt("TotalTime", this.totalTime);
         tag.putInt("ProcessTime", this.processTime);
+        tag.putString("ItemDirection", String.valueOf(this.itemDirection).toUpperCase());
 
         CompoundNBT compoundnbt = new CompoundNBT();
         this.recipesUsed.forEach((resourceLocation, integer) -> compoundnbt.putInt(resourceLocation.toString(), integer));
@@ -55,6 +57,7 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
         this.STACKS.setItem(0, ItemStack.of((CompoundNBT) Objects.requireNonNull(tag.get("RecipeItem"))));
         this.totalTime = tag.getInt("TotalTime");
         this.processTime = tag.getInt("ProcessTime");
+        this.itemDirection = Direction.valueOf(tag.getString("ItemDirection"));
 
         CompoundNBT recipesUsed = tag.getCompound("RecipesUsed");
         for (String s : recipesUsed.getAllKeys()) {
@@ -72,6 +75,14 @@ public class RackTileEntity extends AbstractRackTileEntity implements ISidedInve
 
     public IInventory getInventory() {
         return STACKS;
+    }
+
+    public void setItemDirection(Direction itemDirection) {
+        this.itemDirection = itemDirection;
+    }
+
+    public Direction getItemDirection() {
+        return itemDirection;
     }
 
     @Override

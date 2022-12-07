@@ -38,7 +38,7 @@ public abstract class AbstractRackTileEntity extends BaseTileEntity implements I
     }
 
     LazyOptional<? extends IItemHandler>[] handlers =
-            SidedInvWrapper.create((ISidedInventory) this, Direction.UP, Direction.DOWN);
+            SidedInvWrapper.create((ISidedInventory) this, Direction.values());
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {

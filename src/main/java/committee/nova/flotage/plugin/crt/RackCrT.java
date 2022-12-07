@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
-@ZenCodeType.Name("mods.endless.RackRecipe")
+@ZenCodeType.Name("mods.flotage.RackRecipe")
 public class RackCrT implements IRecipeManager {
     public static final RackCrT INSTANCE = new RackCrT();
 

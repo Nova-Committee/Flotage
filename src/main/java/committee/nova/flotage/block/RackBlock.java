@@ -66,6 +66,7 @@ public class RackBlock extends Block  {
         if (result.getDirection() == Direction.UP && world.getBlockEntity(pos) != null) {
             RackTileEntity tile = (RackTileEntity) world.getBlockEntity(pos);
             if (tile != null) {
+                tile.setItemDirection(player.getDirection());
                 return StackHelper.use(player, hand, tile);
             }
             return ActionResultType.FAIL;

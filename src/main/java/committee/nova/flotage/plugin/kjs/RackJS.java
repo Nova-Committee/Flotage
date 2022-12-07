@@ -29,9 +29,8 @@ public class RackJS extends RecipeJS {
         }
     }
 
-    public RecipeJS processTime(int time) {
+    public void processTime(int time) {
         json.addProperty("processtime", Math.max(0, time));
-        return this;
     }
 
     public RecipeJS mode(String mode) {
