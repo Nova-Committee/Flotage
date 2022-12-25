@@ -1,6 +1,9 @@
 {
   "itemGroup.flotage": "Flotage",
 
+  "block.flotage.straw_broken_raft": "Straw Broken Raft",
+  "block.flotage.straw_raft": "Straw Raft",
+
   "block.flotage.oak_log_raft": "Oak Raft",
   "block.flotage.spruce_log_raft": "Spruce Raft",
   "block.flotage.birch_log_raft": "Birch Raft",

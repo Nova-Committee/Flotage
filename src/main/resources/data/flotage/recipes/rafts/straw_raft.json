@@ -1,0 +1,21 @@
+{
+  "conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "farmersdelight:straw_bale"
+    }
+  },
+  "result": {
+    "item": "flotage:straw_raft",
+    "count": 12
+  }
+}
