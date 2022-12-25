@@ -1,14 +1,18 @@
 modLoader="javafml"
 loaderVersion="[36,)"
 license="MIT"
+
 [[mods]]
 modId="flotage"
 version="${file.jarVersion}"
 displayName="Flotage"
 authors="Nova Committee,Chemiofitor"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/flotage"
 description='''
-Floating in the sea.
+Are you troubled by not being able to easily set up camp at sea?
+Just ues the raft!
 '''
+
 [[dependencies.flotage]]
    modId="forge"
    mandatory=true
@@ -21,3 +25,6 @@ Floating in the sea.
    versionRange="[1.16.5,1.17)"
    ordering="NONE"
    side="BOTH"
+
+[modproperties.flotage]
+catalogueImageIcon="flotage:oak_rack"

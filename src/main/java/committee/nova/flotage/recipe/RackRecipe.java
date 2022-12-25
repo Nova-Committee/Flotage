@@ -3,6 +3,7 @@ package committee.nova.flotage.recipe;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
+import committee.nova.flotage.FlotageConfig;
 import committee.nova.flotage.init.FloRecipeTypes;
 import committee.nova.flotage.init.FloRecipes;
 import committee.nova.flotage.util.rack.RackMode;
@@ -38,6 +39,15 @@ public class RackRecipe implements IRecipe<IInventory> {
         this.mode = RackMode.match(mode);
     }
 
+    public RackRecipe(ResourceLocation id, Ingredient ingredient, ItemStack result, int processTime, RackMode mode) {
+        this.type = FloRecipeTypes.RACK_RECIPE_TYPE;
+        this.id = id;
+        this.ingredient = ingredient;
+        this.result = result;
+        this.processTime = processTime;
+        this.mode = mode;
+    }
+
     public int getProcessTime() {
         return processTime;
     }
@@ -69,6 +79,9 @@ public class RackRecipe implements IRecipe<IInventory> {
     }
 
     public boolean isRecipeConditionMet(World world, BlockPos pos) {
+        if (!FlotageConfig.RACK_RECIPE_CONDITIONS.get()) {
+            return true;
+        }
         return (this.getMode() == RackMode.switchingMode(world, pos) || this.getMode() == RackMode.EMPTY);
     }
 

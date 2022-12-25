@@ -9,6 +9,7 @@ import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionRemoveRecipeByOutputInput;
 import committee.nova.flotage.init.FloRecipeTypes;
 import committee.nova.flotage.recipe.RackRecipe;
+import committee.nova.flotage.util.rack.RackMode;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
@@ -26,6 +27,15 @@ public class RackCrT implements IRecipeManager {
         RackRecipe recipe = new RackRecipe(res, Ingredient.of(input.getInternal()), output.getInternal(), time, mode);
 
         CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, "(mode:"+mode+")"));
+    }
+
+    @ZenCodeType.Method
+    public void addRecipe(String id, IItemStack input, IItemStack output, int time) {
+        ResourceLocation res = new ResourceLocation("crafttweaker", id);
+
+        RackRecipe recipe = new RackRecipe(res, Ingredient.of(input.getInternal()), output.getInternal(), time, RackMode.EMPTY);
+
+        CraftTweakerAPI.apply(new ActionAddRecipe(this, recipe, "(mode:"+RackMode.EMPTY.getType()+")"));
     }
 
     @ZenCodeType.Method
