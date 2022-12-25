@@ -1,5 +1,6 @@
 package committee.nova.flotage.block;
 
+import committee.nova.flotage.FlotageConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -28,7 +29,7 @@ public class BrokenRaftBlock extends BaseRaftBlock implements SimpleWaterloggedB
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand playerHand, BlockHitResult result) {
         ItemStack handStack = player.getMainHandItem();
         if (handStack.getItem() == repairItem) {
-            if (!player.isCreative() && new Random().nextFloat() < 0.3) {
+            if (!player.isCreative() && new Random().nextFloat() < FlotageConfig.RAFT_FIX_COST_CHANCE.get()) {
                 handStack.shrink(1);
             }
             Block block = RaftBlock.MAP.get(this);

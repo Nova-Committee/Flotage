@@ -9,7 +9,10 @@ public class RackJS extends RecipeJS {
         inputItems.add(parseIngredientItem(args.get(0)));
         outputItems.add(parseResultItem(args.get(1)));
         processTime(((Number)args.get(2)).intValue());
-        mode((String) args.get(3));
+        if (args.size() > 3)
+            mode((String) args.get(3));
+        else
+            mode("empty");
     }
 
     @Override

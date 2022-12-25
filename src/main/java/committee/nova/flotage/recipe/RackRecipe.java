@@ -1,5 +1,6 @@
 package committee.nova.flotage.recipe;
 
+import committee.nova.flotage.FlotageConfig;
 import committee.nova.flotage.init.FloRecipeSerializers;
 import committee.nova.flotage.init.FloRecipeTypes;
 import committee.nova.flotage.misc.RackMode;
@@ -32,6 +33,15 @@ public class RackRecipe implements Recipe<Container> {
         this.mode = RackMode.match(mode);
     }
 
+    public RackRecipe(ResourceLocation id, Ingredient ingredient, ItemStack result, int processTime, RackMode mode) {
+        this.type = FloRecipeTypes.RACK.get();
+        this.id = id;
+        this.ingredient = ingredient;
+        this.result = result;
+        this.processTime = processTime;
+        this.mode = mode;
+    }
+
     @Override
     public boolean matches(Container container, Level level) {
         return this.ingredient.test(container.getItem(0));
@@ -54,6 +64,9 @@ public class RackRecipe implements Recipe<Container> {
     }
 
     public boolean isRecipeConditionMet(Level world, BlockPos pos) {
+        if (!FlotageConfig.RACK_RECIPE_CONDITIONS.get()) {
+            return true;
+        }
         return (this.getMode() == RackMode.switchingMode(world, pos) || this.getMode() == RackMode.EMPTY);
     }
 
