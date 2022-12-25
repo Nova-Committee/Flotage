@@ -1,0 +1,7 @@
+{
+  "parent": "flotage:base/broken_raft",
+  "textures": {
+    "0": "farmersdelight:block/straw_bale_side",
+    "particle": "farmersdelight:block/straw_bale_side"
+  }
+}

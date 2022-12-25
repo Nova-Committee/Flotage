@@ -8,6 +8,8 @@
     "flotage:acacia_log_raft",
     "flotage:dark_oak_log_raft",
     "flotage:crimson_raft",
-    "flotage:warped_raft"
+    "flotage:warped_raft",
+    "flotage:straw_raft",
+    "flotage:bamboo_raft"
   ]
 }

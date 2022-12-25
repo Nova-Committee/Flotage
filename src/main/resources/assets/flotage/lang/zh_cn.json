@@ -1,6 +1,9 @@
 {
   "itemGroup.flotage": "漂浮物",
 
+  "block.flotage.straw_broken_raft": "损坏的稻草筏",
+  "block.flotage.straw_raft": "稻草筏",
+
   "block.flotage.oak_log_raft": "橡木木筏",
   "block.flotage.spruce_log_raft": "云杉木木筏",
   "block.flotage.birch_log_raft": "白桦木木筏",
