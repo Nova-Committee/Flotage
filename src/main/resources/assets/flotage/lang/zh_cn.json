@@ -58,6 +58,7 @@
   "gui.flotage.rack.mode.night": "条件/模式:夜晚",
   "gui.flotage.rack.mode.rain": "条件/模式:下雨",
   "gui.flotage.rack.mode.snow": "条件/模式:下雪",
+  "gui.flotage.rack.mode.smoke": "条件/模式:烟熏",
   "gui.flotage.rack.mode.rain_at": "条件/模式:淋雨",
   "gui.flotage.rack.mode.snow_at": "条件/模式:淋雪",
 

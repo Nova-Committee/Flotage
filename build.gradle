@@ -19,7 +19,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.18.2-0.2.3'
+version = '1.18.2-0.2.4'
 group = 'committee.nova.flotage'
 archivesBaseName = 'Flotage'
 

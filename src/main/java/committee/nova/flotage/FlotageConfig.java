@@ -13,7 +13,7 @@ public class FlotageConfig {
     static {
         ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
         COMMON_BUILDER.comment("Rack settings").push("rack");
-        RACK_MAX_SIZE = COMMON_BUILDER.comment("Max stack size").defineInRange("size", 1, 1, 16);
+        RACK_MAX_SIZE = COMMON_BUILDER.comment("Max stack size").defineInRange("size", 1, 1, 64);
         RACK_RECIPE_CONDITIONS = COMMON_BUILDER.comment("Enable formula conditions").define("value", true);
         COMMON_BUILDER.pop();
 

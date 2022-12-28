@@ -58,6 +58,7 @@
   "gui.flotage.rack.mode.night": "Condition/Mode:night",
   "gui.flotage.rack.mode.rain": "Condition/Mode:rain",
   "gui.flotage.rack.mode.snow": "Condition/Mode:snow",
+  "gui.flotage.rack.mode.smoke": "Condition/Mode:smoke",
   "gui.flotage.rack.mode.rain_at": "Condition/Mode:rain at rack",
   "gui.flotage.rack.mode.snow_at": "Condition/Mode:snow at rack",
 

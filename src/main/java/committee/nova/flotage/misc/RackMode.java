@@ -3,6 +3,8 @@ package committee.nova.flotage.misc;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 public enum RackMode {
@@ -11,6 +13,7 @@ public enum RackMode {
     NIGHT("night"),
     RAIN("rain"),
     SNOW("snow"),
+    SMOKE("smoke"),
     RAIN_AT("rain_at"),
     SNOW_AT("snow_at");
     private final String type;
@@ -31,8 +34,18 @@ public enum RackMode {
                 } else if (level.isRainingAt(pos.above())) {
                     return RAIN_AT;
                 }
+                if (level.getBlockState(pos.below()).is(Blocks.CAMPFIRE)) {
+                    if (level.getBlockState(pos.below()).getValue(CampfireBlock.LIT)) {
+                        return SMOKE;
+                    }
+                }
                 return RAIN;
             }else {
+                if (level.getBlockState(pos.below()).is(Blocks.CAMPFIRE)) {
+                    if (level.getBlockState(pos.below()).getValue(CampfireBlock.LIT)) {
+                        return SMOKE;
+                    }
+                }
                 if (level.isDay()) {
                     return SUN;
                 }
