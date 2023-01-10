@@ -1,0 +1,8 @@
+{
+  "parent": "flotage:base/crossed_fence",
+  "textures": {
+    "0": "minecraft:block/birch_log",
+    "1": "minecraft:block/birch_log_top",
+    "particle": "minecraft:block/birch_log"
+  }
+}

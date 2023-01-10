@@ -1,8 +1,0 @@
-{
-	"parent": "flotage:base/rack",
-	"textures": {
-		"0": "block/crimson_stem",
-		"1": "block/crimson_stem_top",
-		"particle": "block/crimson_stem"
-	}
-}

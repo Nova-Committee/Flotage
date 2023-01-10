@@ -1,6 +1,7 @@
 package committee.nova.flotage.plugin.jei;
 
 import committee.nova.flotage.Flotage;
+import committee.nova.flotage.FlotageUtil;
 import committee.nova.flotage.init.FloItems;
 import committee.nova.flotage.init.FloRecipeTypes;
 import committee.nova.flotage.recipe.RackRecipe;
@@ -27,7 +28,7 @@ public class FloJEI implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return Flotage.asRes("jei_plugin");
+        return FlotageUtil.asRes("jei_plugin");
     }
 
     @Override

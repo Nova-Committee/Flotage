@@ -1,7 +1,0 @@
-{
-	"parent": "flotage:base/raft",
-	"textures": {
-		"0": "block/jungle_log",
-		"particle": "block/jungle_log"
-	}
-}

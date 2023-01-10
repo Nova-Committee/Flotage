@@ -1,6 +1,6 @@
 package committee.nova.flotage.plugin.jei;
 
-import committee.nova.flotage.Flotage;
+import committee.nova.flotage.FlotageUtil;
 import committee.nova.flotage.recipe.RackRecipe;
 import committee.nova.flotage.tile.container.RackContainer;
 import mezz.jei.api.recipe.transfer.IRecipeTransferInfo;
@@ -40,6 +40,6 @@ public class RackRecipeTransfer implements IRecipeTransferInfo<RackContainer, Ra
     @SuppressWarnings("removal")
     @Override
     public ResourceLocation getRecipeCategoryUid() {
-        return Flotage.asRes("rack");
+        return FlotageUtil.asRes("rack");
     }
 }

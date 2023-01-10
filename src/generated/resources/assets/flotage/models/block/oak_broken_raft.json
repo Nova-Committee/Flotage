@@ -1,0 +1,7 @@
+{
+  "parent": "flotage:base/raft",
+  "textures": {
+    "0": "minecraft:block/oak_log",
+    "particle": "minecraft:block/oak_log"
+  }
+}

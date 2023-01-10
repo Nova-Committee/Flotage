@@ -4,7 +4,7 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.mojang.blaze3d.vertex.PoseStack;
-import committee.nova.flotage.Flotage;
+import committee.nova.flotage.FlotageUtil;
 import committee.nova.flotage.init.FloBlocks;
 import committee.nova.flotage.misc.RackMode;
 import committee.nova.flotage.recipe.RackRecipe;
@@ -28,7 +28,7 @@ import static mezz.jei.api.recipe.RecipeIngredientRole.INPUT;
 import static mezz.jei.api.recipe.RecipeIngredientRole.OUTPUT;
 
 public class RackCategory implements IRecipeCategory<RackRecipe> {
-    protected static final ResourceLocation BACKGROUND_LOC = Flotage.asRes("textures/gui/jei/rack.png");
+    protected static final ResourceLocation BACKGROUND_LOC = FlotageUtil.asRes("textures/gui/jei/rack.png");
     private final int regularProcessTime;
     private final IDrawable background;
     private final IDrawable icon;
@@ -112,7 +112,7 @@ public class RackCategory implements IRecipeCategory<RackRecipe> {
     @SuppressWarnings("removal")
     @Override
     public ResourceLocation getUid() {
-        return Flotage.asRes("rack");
+        return FlotageUtil.asRes("rack");
     }
 
     @SuppressWarnings("removal")

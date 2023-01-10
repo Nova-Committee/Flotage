@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "flotage:rack",
+  "ingredient": {
+    "item": "farmersdelight:ham"
+  },
+  "result": "farmersdelight:smoked_ham",
+  "mode": "smoke",
+  "processtime": 100
+}

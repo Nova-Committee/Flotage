@@ -1,6 +1,5 @@
 package committee.nova.flotage;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -19,9 +18,5 @@ public class Flotage {
         FlotageUtil.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    public static ResourceLocation asRes(String path) {
-        return new ResourceLocation(MODID, path);
     }
 }
