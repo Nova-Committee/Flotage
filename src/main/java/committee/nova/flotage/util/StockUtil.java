@@ -1,4 +1,4 @@
-package committee.nova.flotage.misc;
+package committee.nova.flotage.util;
 
 import committee.nova.flotage.FlotageConfig;
 import committee.nova.flotage.init.FloTags;
@@ -11,7 +11,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.Objects;
 
-public class StockManager {
+public class StockUtil {
     public static final int defLimitAmount = FlotageConfig.RACK_MAX_SIZE.get();
 
     public static InteractionResult use(Player player, InteractionHand playerHand, RackBlockEntity blockEntity) {

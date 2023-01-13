@@ -1,7 +1,7 @@
 package committee.nova.flotage.block;
 
 import committee.nova.flotage.init.FloBlockEntities;
-import committee.nova.flotage.misc.StockManager;
+import committee.nova.flotage.util.StockUtil;
 import committee.nova.flotage.tile.RackBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -80,7 +80,7 @@ public class RackBlock extends BaseEntityBlock {
             RackBlockEntity tile = (RackBlockEntity) level.getBlockEntity(pos);
             if (tile != null) {
                 tile.setItemDirection(player.getDirection());
-                return StockManager.use(player, playerHand, tile);
+                return StockUtil.use(player, playerHand, tile);
             }
             return InteractionResult.FAIL;
         }

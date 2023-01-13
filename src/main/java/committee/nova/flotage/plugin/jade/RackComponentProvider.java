@@ -1,6 +1,6 @@
 package committee.nova.flotage.plugin.jade;
 
-import committee.nova.flotage.misc.RackMode;
+import committee.nova.flotage.recipe.RackMode;
 import committee.nova.flotage.tile.RackBlockEntity;
 import mcp.mobius.waila.api.BlockAccessor;
 import mcp.mobius.waila.api.IComponentProvider;

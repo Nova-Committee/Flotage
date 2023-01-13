@@ -6,7 +6,7 @@ import com.google.common.cache.LoadingCache;
 import com.mojang.blaze3d.vertex.PoseStack;
 import committee.nova.flotage.FlotageUtil;
 import committee.nova.flotage.init.FloBlocks;
-import committee.nova.flotage.misc.RackMode;
+import committee.nova.flotage.recipe.RackMode;
 import committee.nova.flotage.recipe.RackRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;

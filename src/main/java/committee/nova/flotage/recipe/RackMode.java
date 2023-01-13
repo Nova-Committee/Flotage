@@ -1,4 +1,4 @@
-package committee.nova.flotage.misc;
+package committee.nova.flotage.recipe;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;

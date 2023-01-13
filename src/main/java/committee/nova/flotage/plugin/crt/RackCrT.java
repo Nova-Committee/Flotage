@@ -8,7 +8,7 @@ import com.blamejared.crafttweaker.api.ingredient.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.api.recipe.manager.base.IRecipeManager;
 import committee.nova.flotage.init.FloRecipeTypes;
-import committee.nova.flotage.misc.RackMode;
+import committee.nova.flotage.recipe.RackMode;
 import committee.nova.flotage.recipe.RackRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;

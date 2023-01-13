@@ -3,7 +3,7 @@ package committee.nova.flotage.tile;
 import committee.nova.flotage.init.FloBlockEntities;
 import committee.nova.flotage.init.FloRecipeTypes;
 import committee.nova.flotage.init.FloTags;
-import committee.nova.flotage.misc.StockManager;
+import committee.nova.flotage.util.StockUtil;
 import committee.nova.flotage.recipe.RackRecipe;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -145,7 +145,7 @@ public class RackBlockEntity extends BlockEntity implements WorldlyContainer, Re
         if (stack.is(FloTags.UNSTACKABLE)) {
             return this.STACKS.getStackInSlot(0).getCount() < 1;
         }
-        if (stack.getCount() + this.STACKS.getStackInSlot(0).getCount() > StockManager.defLimitAmount)
+        if (stack.getCount() + this.STACKS.getStackInSlot(0).getCount() > StockUtil.defLimitAmount)
             return false;
         return (direction != Direction.DOWN && id == 0);
     }
@@ -236,7 +236,7 @@ public class RackBlockEntity extends BlockEntity implements WorldlyContainer, Re
         ItemStack itemstack1 = iRecipe.assemble(this);
         if (itemstack1 != itemstack) {
             if (!world.isClientSide) {
-                int i = Math.min(itemstack.getCount(), StockManager.defLimitAmount);
+                int i = Math.min(itemstack.getCount(), StockUtil.defLimitAmount);
                 itemstack1.setCount(i);
                 setItem(0, itemstack1);
                 this.recipesUsed.clear();

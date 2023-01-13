@@ -3,7 +3,7 @@ package committee.nova.flotage.data.provider;
 import committee.nova.flotage.Flotage;
 import committee.nova.flotage.FlotageUtil;
 import committee.nova.flotage.block.*;
-import committee.nova.flotage.data.NameUtil;
+import committee.nova.flotage.util.NameUtil;
 import committee.nova.flotage.init.FloBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;

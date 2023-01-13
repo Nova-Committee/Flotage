@@ -3,7 +3,6 @@ package committee.nova.flotage.recipe;
 import committee.nova.flotage.FlotageConfig;
 import committee.nova.flotage.init.FloRecipeSerializers;
 import committee.nova.flotage.init.FloRecipeTypes;
-import committee.nova.flotage.misc.RackMode;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;

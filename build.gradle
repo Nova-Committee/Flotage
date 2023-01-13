@@ -1,32 +1,18 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        mavenCentral()
-        jcenter()
-        maven { url = 'https://maven.parchmentmc.org' }
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: "${forgegradle_version}", changing: false
-        classpath "org.parchmentmc:librarian:${librarian_version}"
-    }
-}
-
 plugins {
-    id 'idea'
-    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-
-version = '1.18.2-0.2.3'
 group = 'committee.nova.flotage'
-archivesBaseName = 'Flotage'
+version = minecraft_version + '-' + mod_version
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java {
+    archivesBaseName = 'Flotage'
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
 
 minecraft {
-    mappings channel: 'parchment', version: "${parchment_version}-${minecraft_version}"
+    mappings channel: 'official', version: "${minecraft_version}"
 
     runs {
         client {
@@ -36,6 +22,8 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', 'flotage'
 
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             mods {
                 flotage {
                     source sourceSets.main
@@ -75,8 +63,9 @@ minecraft {
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'REGISTRIES'
-
             property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             args '--mod', 'flotage', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
@@ -93,11 +82,25 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        name 'Progwml6 maven'
-        url 'https://dvs1.progwml6.com/files/maven'
+        //Location of the maven for Architectury API
+        url = "https://maven.architectury.dev"
+        content {
+            includeGroup "dev.architectury"
+        }
+    }
+
+    maven {
+        //Location of the maven for KubeJS and Rhino
+        url = "https://maven.saps.dev/minecraft"
+        content {
+            includeGroup "dev.latvian.mods"
+        }
     }
     maven {
-        allowInsecureProtocol = true
+        //Location of the maven for JEI
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
+    maven {
         url "https://www.cursemaven.com"
         content {
             includeGroup "curse.maven"
@@ -106,22 +109,18 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.80'
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    compileOnly fg.deobf("curse.maven:kubejs-238086:4118107")
-    compileOnly fg.deobf("curse.maven:rhino-416294:4069880")
+    compileOnly fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}")
+    compileOnly fg.deobf("dev.latvian.mods:rhino-forge:${rhino_version}")
+
     compileOnly fg.deobf("curse.maven:crafttweaker-239197:4050366")
     implementation fg.deobf("curse.maven:jade-324717:4082408")
-    implementation fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
+
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-compileJava {
-    options.compilerArgs = ['-Xdiags:verbose']
-}
 
 jar {
     manifest {
@@ -138,3 +137,7 @@ jar {
 }
 
 jar.finalizedBy('reobfJar')
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

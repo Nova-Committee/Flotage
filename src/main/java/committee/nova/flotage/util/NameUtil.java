@@ -1,4 +1,4 @@
-package committee.nova.flotage.data;
+package committee.nova.flotage.util;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
