@@ -1,5 +1,5 @@
 {
-  "parent": "flotage:base/broken_raft",
+  "parent": "flotage:base/raft",
   "textures": {
     "0": "minecraft:block/crimson_stem",
     "particle": "minecraft:block/crimson_stem"

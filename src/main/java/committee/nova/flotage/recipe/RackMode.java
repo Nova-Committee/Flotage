@@ -26,7 +26,7 @@ public enum RackMode {
         if (!level.isClientSide) {
             if (level.isRaining()) {
                 Biome biome = level.getBiome(pos).value();
-                if (biome.getPrecipitation() == Biome.Precipitation.SNOW && biome.coldEnoughToSnow(pos)) {
+                if (biome.getPrecipitationAt(pos) == Biome.Precipitation.SNOW && biome.coldEnoughToSnow(pos)) {
                     if (level.canSeeSky(pos) && !(level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, pos).getY() > pos.getY())) {
                         return SNOW_AT;
                     }

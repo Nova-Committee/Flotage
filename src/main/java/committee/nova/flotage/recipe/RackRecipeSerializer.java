@@ -3,7 +3,6 @@ package committee.nova.flotage.recipe;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
-import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -11,10 +10,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
-import net.minecraftforge.registries.ForgeRegistryEntry;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-public class RackRecipeSerializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<RackRecipe> {
+public class RackRecipeSerializer implements RecipeSerializer<RackRecipe> {
 
     @Override
     public RackRecipe fromJson(ResourceLocation id, JsonObject object) {
@@ -26,7 +25,7 @@ public class RackRecipeSerializer extends ForgeRegistryEntry<RecipeSerializer<?>
         else {
             String s1 = GsonHelper.getAsString(object, "result");
             ResourceLocation resourcelocation = new ResourceLocation(s1);
-            itemstack = new ItemStack(Registry.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + s1 + " does not exist")));
+            itemstack = new ItemStack(ForgeRegistries.ITEMS.getHolder(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + s1 + " does not exist")));
         }
         int i = GsonHelper.getAsInt(object, "processtime", 200);
         String s = GsonHelper.getAsString(object, "mode", "empty");

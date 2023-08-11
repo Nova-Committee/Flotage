@@ -4,11 +4,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import committee.nova.flotage.tile.RackBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 public class RackTER implements BlockEntityRenderer<RackBlockEntity> {
@@ -27,7 +27,7 @@ public class RackTER implements BlockEntityRenderer<RackBlockEntity> {
             float scale = stack.getItem() instanceof BlockItem? 0.8f : 0.6f;
             pose.scale(scale,scale,scale);
             pose.mulPose(direction.getRotation());
-            Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, light, overlay, pose, buffer, i);
+            Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.GROUND, light, overlay, pose, buffer, Minecraft.getInstance().level, 0);
             pose.popPose();
         }
     }

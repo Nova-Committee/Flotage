@@ -2,14 +2,11 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-group = 'committee.nova.flotage'
 version = minecraft_version + '-' + mod_version
+group = 'committee.nova.flotage'
+archivesBaseName = 'flotage'
 
-java {
-    archivesBaseName = 'Flotage'
-    toolchain.languageVersion = JavaLanguageVersion.of(17)
-}
-
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
     mappings channel: 'official', version: "${minecraft_version}"
@@ -22,8 +19,6 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', 'flotage'
 
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             mods {
                 flotage {
                     source sourceSets.main
@@ -64,8 +59,6 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             args '--mod', 'flotage', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
@@ -82,22 +75,18 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        //Location of the maven for Architectury API
         url = "https://maven.architectury.dev"
         content {
             includeGroup "dev.architectury"
         }
     }
-
     maven {
-        //Location of the maven for KubeJS and Rhino
         url = "https://maven.saps.dev/minecraft"
         content {
             includeGroup "dev.latvian.mods"
         }
     }
     maven {
-        //Location of the maven for JEI
         url = 'https://dvs1.progwml6.com/files/maven/'
     }
     maven {
@@ -110,15 +99,6 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-
-    compileOnly fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}")
-    compileOnly fg.deobf("dev.latvian.mods:rhino-forge:${rhino_version}")
-
-    compileOnly fg.deobf("curse.maven:crafttweaker-239197:4050366")
-    implementation fg.deobf("curse.maven:jade-324717:4082408")
-
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 }
 
 

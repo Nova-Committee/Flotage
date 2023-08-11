@@ -5,6 +5,7 @@ import committee.nova.flotage.init.FloRecipeSerializers;
 import committee.nova.flotage.init.FloRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
@@ -47,7 +48,7 @@ public class RackRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container container) {
+    public ItemStack assemble(Container container, RegistryAccess p_267165_) {
         ItemStack itemstack = this.result.copy();
         CompoundTag tag = container.getItem(0).getTag();
         if (tag != null) {
@@ -60,6 +61,11 @@ public class RackRecipe implements Recipe<Container> {
     @Override
     public boolean canCraftInDimensions(int i, int i1) {
         return true;
+    }
+
+    @Override
+    public ItemStack getResultItem(RegistryAccess p_267052_) {
+        return this.result;
     }
 
     public boolean isRecipeConditionMet(Level world, BlockPos pos) {
@@ -81,11 +87,6 @@ public class RackRecipe implements Recipe<Container> {
         NonNullList<Ingredient> list = NonNullList.create();
         list.add(this.ingredient);
         return list;
-    }
-
-    @Override
-    public ItemStack getResultItem() {
-        return this.result;
     }
 
     @Override

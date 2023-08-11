@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class FloBlockEntities {
-    public static final DeferredRegister<BlockEntityType<?>> TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, Flotage.MODID);
+    public static final DeferredRegister<BlockEntityType<?>> TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Flotage.MODID);
 
     public static final RegistryObject<BlockEntityType<RackBlockEntity>> RACK_TILE = TYPES.register("rack",
             () -> BlockEntityType.Builder.of(RackBlockEntity::new,

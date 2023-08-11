@@ -3,6 +3,7 @@ package committee.nova.flotage.block;
 import committee.nova.flotage.FlotageConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -28,7 +29,7 @@ public class RaftBlock extends BaseRaftBlock implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         if (world.isRainingAt(pos.above()) && new Random().nextFloat() < FlotageConfig.RAFT_DAMAGE_PROBABILITY.get()) {
             world.setBlock(pos, brokenBlock.defaultBlockState(), 3);
         }

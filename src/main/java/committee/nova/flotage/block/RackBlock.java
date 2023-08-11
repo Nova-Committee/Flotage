@@ -76,7 +76,7 @@ public class RackBlock extends BaseEntityBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand playerHand, BlockHitResult result) {
-        if (result.getDirection() == Direction.UP && level.getBlockEntity(pos) != null) {
+        if (level.getBlockEntity(pos) != null) {
             RackBlockEntity tile = (RackBlockEntity) level.getBlockEntity(pos);
             if (tile != null) {
                 tile.setItemDirection(player.getDirection());

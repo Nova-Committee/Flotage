@@ -1,5 +1,5 @@
 {
-  "parent": "flotage:base/broken_raft",
+  "parent": "flotage:base/raft",
   "textures": {
     "0": "minecraft:block/spruce_log",
     "particle": "minecraft:block/spruce_log"

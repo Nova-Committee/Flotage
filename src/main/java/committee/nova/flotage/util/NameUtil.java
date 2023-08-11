@@ -2,17 +2,14 @@ package committee.nova.flotage.util;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistryEntry;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
 
 public class NameUtil {
-    public static String name(ForgeRegistryEntry<?> entry) {
-        return Objects.requireNonNull(entry.getRegistryName()).getPath();
-    }
 
     public static ResourceLocation texture(Block block) {
-        String name = name(block);
+        String name = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getPath();
         if (name.startsWith("acacia")) {
             return new ResourceLocation("block/acacia_log");
         } else if (name.startsWith("birch")) {
